@@ -1,0 +1,1068 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="installation.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../Figures/o2logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>5: Access to CCDB - O2 tutorial (stripped-down and personalized version)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/material/bootstrap-like-tables.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#access-to-ccdb" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="O2 tutorial (stripped-down and personalized version)" class="md-header__button md-logo" aria-label="O2 tutorial (stripped-down and personalized version)" data-md-component="logo">
+      
+  <img src="../Figures/o2logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            O2 tutorial (stripped-down and personalized version)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5: Access to CCDB
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="O2 tutorial (stripped-down and personalized version)" class="md-nav__button md-logo" aria-label="O2 tutorial (stripped-down and personalized version)" data-md-component="logo">
+      
+  <img src="../Figures/o2logo.png" alt="logo">
+
+    </a>
+    O2 tutorial (stripped-down and personalized version)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="start.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1: Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2: Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="skeleton.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3: Task skeleton
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cuts.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4: Adding cuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5: Access to CCDB
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ccdb.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5: Access to CCDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-adding-new-data-member-in-the-analysis-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Adding new data member in the analysis task.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-structure-of-root-file-with-efficiency-corrections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The structure of ROOT file with efficiency corrections.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-new-configurable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. New configurable.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-function-th1f-gethistogramwithweights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. function TH1F* GetHistogramWithWeights(...)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-usage-of-the-ccdb-object-in-analysis-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Usage of the "ccdb" object in analysis task.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-function-tobject-getobjectfromlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. function TObject* GetObjectFromList(...)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenges
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Challenges
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Challenges/Challenge_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenge 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Challenges/Challenge_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenge 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-adding-new-data-member-in-the-analysis-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Adding new data member in the analysis task.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-structure-of-root-file-with-efficiency-corrections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The structure of ROOT file with efficiency corrections.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-new-configurable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. New configurable.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-function-th1f-gethistogramwithweights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. function TH1F* GetHistogramWithWeights(...)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-usage-of-the-ccdb-object-in-analysis-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Usage of the "ccdb" object in analysis task.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-function-tobject-getobjectfromlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. function TObject* GetObjectFromList(...)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="access-to-ccdb">Access to CCDB</h1>
+<p><strong>Last update</strong>: 20261018-1</p>
+<p>In this part of O2 tutorial, you will learn the technique for accessing a histogram (or some other ROOT object) at run-time in your analysis task in O2Physics from an external ROOT file, and saving that histogram in the output file of your analysis. Typically, this way you access a histogram with efficiency corrections from an external ROOT file, use information from it during analysis, and then save that histogram in the output file of your analysis. This last part is not a trivial duplication of histograms &mdash; it is important that you can easily trace back which efficiency corrections you have used in a given analysis, and that is easiest to achieve without additional bookkeeping if you save that histogram in the output of that analysis.</p>
+<p>To master the technique, follow these steps below...</p>
+<h4 id="1-adding-new-data-member-in-the-analysis-task">1. Adding new data member in the analysis task.</h4>
+<p>Add among data members of your analysis task in O2Physics a new TH1F histogram, named <strong><em>histWeights</em></strong> (of course, you can generalize and rename later, we now focus only on technicalities).</p>
+<h4 id="2-the-structure-of-root-file-with-efficiency-corrections">2. The structure of ROOT file with efficiency corrections.</h4>
+<p>Make locally a ROOT file, named "weights.root", which has the following internal structure (you can start developing and maintaining a dedicated ROOT macro/executable for this sake, to automate the whole procedure, as some aspects of this internal structure are mandatory):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">TList</span><span class="w"> </span><span class="s">&quot;ccdb_object&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="n">TList</span><span class="w"> </span><span class="s">&quot;000123456&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">     </span><span class="n">histWithEfficiencyCorrections_1</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">     </span><span class="n">histWithEfficiencyCorrections_2</span><span class="w"> </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">     </span><span class="p">...</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">histograms</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">TList</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="s">&quot;000123456&quot;</span><span class="w"> </span><span class="p">...</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="n">TList</span><span class="w"> </span><span class="s">&quot;000654321&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">     </span><span class="n">histWithEfficiencyCorrections_1</span><span class="w"> </span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">     </span><span class="n">histWithEfficiencyCorrections_2</span><span class="w"> </span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">     </span><span class="p">...</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">histograms</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">TList</span><span class="w"> </span><span class="n">named</span><span class="w"> </span><span class="s">&quot;000654321&quot;</span><span class="w"> </span><span class="p">...</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="p">...</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">nested</span><span class="w"> </span><span class="n">TLists</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="n">TList</span><span class="w"> </span><span class="s">&quot;ccdb_object&quot;</span><span class="w"> </span><span class="p">...</span><span class="w">  </span>
+</code></pre></div>
+<p>In the above example internal structure of ROOT file "weighs.root":</p>
+<ul>
+<li><strong><em>TList "ccdb_object"</em></strong> is the top-level list which contains all other objects in this ROOT file "weights.root" &mdash; it has to be named exactly "ccdb_object";</li>
+<li><strong><em>TList "000123456"</em></strong> is the example nested TList, which will contain all histograms with efficiency corrections for the particular run number "000123456" (the name of this TList is custom); </li>
+<li><strong><em>"histWithEfficiencyCorrections_1"</em></strong> is the first example histogram, with some specific efficiency corrections pertaining to run number "000123456" (e.g. phi-weights, the name of this histogram is custom);</li>
+<li><strong><em>"histWithEfficiencyCorrections_2"</em></strong> is the second example histogram, with some other efficiency corrections pertaining to run number "000123456" (e.g. pt-weights, the name of this histogram is custom). </li>
+<li>... and so on!</li>
+</ul>
+<p>It doesn't matter for the time being which content you will have in the above example histograms <strong><em>"histWithEfficiencyCorrections_*"</em></strong> , what matters is that now you develop the code in your O2Physics analysis task, which will access, use in the analysis at run-time, and copy that histogram from an external ROOT file, into your data member <strong><em>histWeights</em></strong> , and then save it automatically in the output file "AnalysisResults.root" of your analysis, alongside of other booked objects in the analysis task. </p>
+<h4 id="3-new-configurable">3. New configurable.</h4>
+<p>Add a new configurable to your analysis code using the following code snippet:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Configurable</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cfFileWithWeights</span><span class="p">{</span><span class="s">&quot;cfFileWithWeights&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/abilandz/DatasetsO2/weights.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;path to external ROOT file which holds all particle weights&quot;</span><span class="p">};</span>
+</code></pre></div>
+<p>Then, in a JSON configuration file, you would need to have the corresponding new field when you are configuring your analysis task:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w"> </span><span class="nt">&quot;cfFileWithWeights&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/abilandz/DatasetsO2/weights.root&quot;</span><span class="p">,</span>
+</code></pre></div>
+<p>An external ROOT file "weights.root" can be in three different locations, and after this tutorial, you will master access to that external file for all three cases. An external ROOT file holding efficiency corrections can be:</p>
+<ol>
+<li>
+<p>on your local computer &mdash; just use an absolute or relative path to it in the above JSON field</p>
+</li>
+<li>
+<p>in your home directory in CCDB ("Calibration and Conditions Database"). This is the default, and therefore most important, way to store efficiency corrections. For this case, prepend a file path in the above JSON field with a string "/alice-ccdb.cern.ch/"</p>
+</li>
+<li>
+<p>in your home directory in AliEn. This works, but it is not allowed to use this approach later in a large-scale data analysis in Hyperloop. Therefore, use this only in a local analysis for testing purposes. For this case, prepend a file path in the above JSON field with a string "/alice/cern.ch/"</p>
+</li>
+</ol>
+<p>The main point behind the above convention in the JSON config of specifying the path of an external file is that now in the analysis code it will be automatically determined from that path whether that external file is on a local compute, in CCDB, or in AliEn. Correspondingly, different code needs to be used to access that file, and that is provided with the function <strong><em>TH1F* GetHistogramWithWeights(...)</em></strong>, which is introduced next</p>
+<h4 id="4-function-th1f-gethistogramwithweights">4. function TH1F* GetHistogramWithWeights(...)</h4>
+<p>To fetch automatically in your analysis task in O2Physics a histogram with efficiency corrections from an external ROOT file, for any of the three cases of interest mentioned above (local, CCDB, and AliEn), consider incorporating the function <strong><em>TH1F* GetHistogramWithWeights(...)</em></strong> below into your analysis task. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct <a href="TBI">link</a>.  The function is implemented semi-schematically, but it's trivial to finalize yourself all the remaining details:</p>
+<div class="highlight"><span class="filename">File: src/cpp/GetHistogramWithWeights.cpp</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="nf">GetHistogramWithWeights</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">runNumber</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="c1">// Last update: 20261018 </span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="c1">// *) Return value:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="n">hist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="n">TList</span><span class="o">*</span><span class="w"> </span><span class="n">baseList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="c1">// base top-level list in the TFile, e.g. named &quot;ccdb_object&quot;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="n">TList</span><span class="o">*</span><span class="w"> </span><span class="n">listWithRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="c1">// nested list with run-wise TList&#39;s holding run-specific weights</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="c1">// *) Determine from filePath if the file is on a local machine, or in home dir AliEn, or in CCDB:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="c1">//    Algorithm: a) If filePath begins with &quot;/alice/cern.ch/&quot; then it&#39;s in the home dir AliEn;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="c1">//               b) If filePath begins with &quot;/alice-ccdb.cern.ch/&quot; then it&#39;s in CCDB. Therefore, files in AliEn and CCDB must be specified with abs path;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="c1">//               c) For local files both absolute and relative paths are just fine.</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">bFileIsInAliEn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">bFileIsInCCDB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span><span class="c1">// ... implement your own code here for the above Algorithm, </span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="c1">//     to determine from the content of filePath where the external file is, </span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="c1">//     and reset the above flags bFileIsInAliEn and bFileIsInCCDB correspondingly ...</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bFileIsInAliEn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="err">​</span><span class="w">    </span><span class="c1">// File you want to access is in your home directory in AliEn.</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="c1">// In this branch, there is a special code to support file access in that case.</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="err">​</span><span class="w">    </span><span class="n">TGrid</span><span class="o">*</span><span class="w"> </span><span class="n">alien</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TGrid</span><span class="o">::</span><span class="n">Connect</span><span class="p">(</span><span class="s">&quot;alien&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">Getenv</span><span class="p">(</span><span class="s">&quot;USER&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="c1">// For this to work, do not forget to add #include &lt;TGrid.h&gt; to the preamble of your analysis task</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">alien</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="err">​</span><span class="w">    </span><span class="n">TFile</span><span class="o">*</span><span class="w"> </span><span class="n">weightsFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;alien://%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filePath</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;READ&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// yes, ROOT can open a file transparently, even if it&#39;s sitting in AliEn, with this specific syntax</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">weightsFile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="err">​</span><span class="w">    </span><span class="n">weightsFile</span><span class="o">-&gt;</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;ccdb_object&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">baseList</span><span class="p">);</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">baseList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="err">​</span><span class="w">     </span><span class="c1">// weightsFile-&gt;ls();</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="err">​</span><span class="w">    </span><span class="c1">// Finally, from the top-level TList &quot;ccdb_object&quot;, get the desired nested TList.</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">    </span><span class="c1">// The technical problem here is that it can be nested at any level,</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="err">​</span><span class="w">    </span><span class="c1">// to overcome that there is a helper utility function TObject* GetObjectFromList(...),</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">    </span><span class="c1">// whose implementation if discussed and provided separately.</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="err">​</span><span class="w">    </span><span class="n">listWithRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">GetObjectFromList</span><span class="p">(</span><span class="n">baseList</span><span class="p">,</span><span class="w"> </span><span class="n">runNumber</span><span class="p">));</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">listWithRuns</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="err">​</span><span class="w">     </span><span class="n">TString</span><span class="w"> </span><span class="n">runNumberWithLeadingZeroes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;000&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="err">​</span><span class="w">     </span><span class="n">runNumberWithLeadingZeroes</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">runNumber</span><span class="p">;</span><span class="w"> </span><span class="c1">// another try, with &quot;000&quot; prepended to run number</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="err">​</span><span class="w">     </span><span class="n">listWithRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">GetObjectFromList</span><span class="p">(</span><span class="n">baseList</span><span class="p">,</span><span class="w"> </span><span class="n">runNumberWithLeadingZeroes</span><span class="p">.</span><span class="n">Data</span><span class="p">()));</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="err">​</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">listWithRuns</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="w">   </span><span class="c1">// OK, we got the desired run-specific TList with efficiency corrections for AliEn case, </span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="w">   </span><span class="c1">// after that we can use the common code for all 3 cases (local, AliEn, CCDB),</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="w">   </span><span class="c1">// that common code is further below.</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bFileIsInCCDB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="err">​</span><span class="w">    </span><span class="c1">// File you want to access is in your home directory in CCDB. </span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="w">    </span><span class="c1">// In this branch, there is a special code to support file access in that case.</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a>
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="err">​</span><span class="w">    </span><span class="c1">// Remember that here I do not access the file; instead, I directly access the object in that file.</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="err">​</span><span class="w">    </span><span class="c1">// My home dir in CCDB: https://alice-ccdb.cern.ch/browse/Users/a/abilandz/ =&gt; adapt for your case</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="err">​</span><span class="w">    </span><span class="n">ccdb</span><span class="o">-&gt;</span><span class="n">setURL</span><span class="p">(</span><span class="s">&quot;http://alice-ccdb.cern.ch&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// to be able to use the &quot;ccdb&quot; object in your analysis task, see further down in this tutorial an explanation</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="err">​</span><span class="w">    </span><span class="n">baseList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">ccdb</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TString</span><span class="p">(</span><span class="n">filePath</span><span class="p">).</span><span class="n">ReplaceAll</span><span class="p">(</span><span class="s">&quot;/alice-ccdb.cern.ch/&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">).</span><span class="n">Data</span><span class="p">()));</span><span class="w"> </span>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">baseList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="err">​</span><span class="w">    </span><span class="n">listWithRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">GetObjectFromList</span><span class="p">(</span><span class="n">baseList</span><span class="p">,</span><span class="w"> </span><span class="n">runNumber</span><span class="p">));</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">listWithRuns</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a><span class="err">​</span><span class="w">    </span><span class="n">TString</span><span class="w"> </span><span class="n">runNumberWithLeadingZeroes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;000&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a><span class="err">​</span><span class="w">    </span><span class="n">runNumberWithLeadingZeroes</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">runNumber</span><span class="p">;</span><span class="w"> </span><span class="c1">// another try, with &quot;000&quot; prepended to run number</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a><span class="err">​</span><span class="w">    </span><span class="n">listWithRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">GetObjectFromList</span><span class="p">(</span><span class="n">baseList</span><span class="p">,</span><span class="w"> </span><span class="n">runNumberWithLeadingZeroes</span><span class="p">.</span><span class="n">Data</span><span class="p">()));</span>
+<a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">listWithRuns</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a>
+<a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a><span class="w">   </span><span class="c1">// OK, we got the desired run-specific TList with efficiency corrections for CCDB, </span>
+<a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a><span class="w">   </span><span class="c1">// after that we can use the common code for all 3 cases (local, AliEn, CCDB),</span>
+<a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a><span class="w">   </span><span class="c1">// that common code is further below.</span>
+<a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a>
+<a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a><span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span>
+<a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a>
+<a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a><span class="err">​</span><span class="w">    </span><span class="c1">// File you want to access is on your local computer. </span>
+<a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a><span class="w">    </span><span class="c1">// In this branch, there is a special code to support file access in that case.</span>
+<a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a>
+<a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a><span class="err">​</span><span class="w">    </span><span class="c1">// Check if the external ROOT file exists at the specified path:</span>
+<a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">AccessPathName</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">kFileExists</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;33m if(gSystem-&gt;AccessPathName(filePath,kFileExists)), filePath = %s </span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filePath</span><span class="p">);</span>
+<a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a>
+<a id="__codelineno-3-102" name="__codelineno-3-102" href="#__codelineno-3-102"></a><span class="err">​</span><span class="w">    </span><span class="n">TFile</span><span class="o">*</span><span class="w"> </span><span class="n">weightsFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;READ&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-103" name="__codelineno-3-103" href="#__codelineno-3-103"></a><span class="err">​</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">weightsFile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-104" name="__codelineno-3-104" href="#__codelineno-3-104"></a><span class="err">​</span><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a><span class="err">​</span><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-106" name="__codelineno-3-106" href="#__codelineno-3-106"></a>
+<a id="__codelineno-3-107" name="__codelineno-3-107" href="#__codelineno-3-107"></a><span class="err">​</span><span class="w">    </span><span class="n">weightsFile</span><span class="o">-&gt;</span><span class="n">GetObject</span><span class="p">(</span><span class="s">&quot;ccdb_object&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">baseList</span><span class="p">);</span>
+<a id="__codelineno-3-108" name="__codelineno-3-108" href="#__codelineno-3-108"></a>
+<a id="__codelineno-3-109" name="__codelineno-3-109" href="#__codelineno-3-109"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">baseList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-110" name="__codelineno-3-110" href="#__codelineno-3-110"></a><span class="w">    </span><span class="c1">// weightsFile-&gt;ls();</span>
+<a id="__codelineno-3-111" name="__codelineno-3-111" href="#__codelineno-3-111"></a><span class="w">    </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-3-112" name="__codelineno-3-112" href="#__codelineno-3-112"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-3-113" name="__codelineno-3-113" href="#__codelineno-3-113"></a>
+<a id="__codelineno-3-114" name="__codelineno-3-114" href="#__codelineno-3-114"></a><span class="w">   </span><span class="n">listWithRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">GetObjectFromList</span><span class="p">(</span><span class="n">baseList</span><span class="p">,</span><span class="w"> </span><span class="n">runNumber</span><span class="p">));</span>
+<a id="__codelineno-3-115" name="__codelineno-3-115" href="#__codelineno-3-115"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">listWithRuns</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-116" name="__codelineno-3-116" href="#__codelineno-3-116"></a><span class="w">    </span><span class="n">TString</span><span class="w"> </span><span class="n">runNumberWithLeadingZeroes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;000&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-117" name="__codelineno-3-117" href="#__codelineno-3-117"></a><span class="w">    </span><span class="n">runNumberWithLeadingZeroes</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">runNumber</span><span class="p">;</span><span class="w"> </span><span class="c1">// another try, with &quot;000&quot; prepended to run number</span>
+<a id="__codelineno-3-118" name="__codelineno-3-118" href="#__codelineno-3-118"></a><span class="w">    </span><span class="n">listWithRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">GetObjectFromList</span><span class="p">(</span><span class="n">baseList</span><span class="p">,</span><span class="w"> </span><span class="n">runNumberWithLeadingZeroes</span><span class="p">.</span><span class="n">Data</span><span class="p">()));</span>
+<a id="__codelineno-3-119" name="__codelineno-3-119" href="#__codelineno-3-119"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">listWithRuns</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-120" name="__codelineno-3-120" href="#__codelineno-3-120"></a><span class="w">     </span><span class="c1">// baseList-&gt;ls();</span>
+<a id="__codelineno-3-121" name="__codelineno-3-121" href="#__codelineno-3-121"></a><span class="w">     </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d : this crash can happen if in the output file there is no list with weights for the current run number = %s</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">,</span><span class="w"> </span><span class="n">tc</span><span class="p">.</span><span class="n">fRunNumber</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
+<a id="__codelineno-3-122" name="__codelineno-3-122" href="#__codelineno-3-122"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-123" name="__codelineno-3-123" href="#__codelineno-3-123"></a><span class="w">   </span><span class="p">}</span>
+<a id="__codelineno-3-124" name="__codelineno-3-124" href="#__codelineno-3-124"></a>
+<a id="__codelineno-3-125" name="__codelineno-3-125" href="#__codelineno-3-125"></a><span class="w">   </span><span class="c1">// OK, we got the desired run-specific TList with efficiency corrections for local case, </span>
+<a id="__codelineno-3-126" name="__codelineno-3-126" href="#__codelineno-3-126"></a><span class="w">   </span><span class="c1">// after that we can use the common code for all 3 cases (local, AliEn, CCDB),</span>
+<a id="__codelineno-3-127" name="__codelineno-3-127" href="#__codelineno-3-127"></a><span class="w">   </span><span class="c1">// that common code is further below.</span>
+<a id="__codelineno-3-128" name="__codelineno-3-128" href="#__codelineno-3-128"></a>
+<a id="__codelineno-3-129" name="__codelineno-3-129" href="#__codelineno-3-129"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="c1">// end of else</span>
+<a id="__codelineno-3-130" name="__codelineno-3-130" href="#__codelineno-3-130"></a>
+<a id="__codelineno-3-131" name="__codelineno-3-131" href="#__codelineno-3-131"></a><span class="w">  </span><span class="c1">// The common code for all three cases, where from &quot;listWithRuns&quot; you fetch the desired histogram with efficiency corrections:</span>
+<a id="__codelineno-3-132" name="__codelineno-3-132" href="#__codelineno-3-132"></a><span class="w">  </span><span class="c1">// listWithRuns-&gt;ls();</span>
+<a id="__codelineno-3-133" name="__codelineno-3-133" href="#__codelineno-3-133"></a>
+<a id="__codelineno-3-134" name="__codelineno-3-134" href="#__codelineno-3-134"></a>
+<a id="__codelineno-3-135" name="__codelineno-3-135" href="#__codelineno-3-135"></a><span class="w">  </span><span class="c1">// ... implement your own code to get pointer to &quot;hist&quot; object from TList *listWithRuns&quot; </span>
+<a id="__codelineno-3-136" name="__codelineno-3-136" href="#__codelineno-3-136"></a><span class="w">  </span><span class="c1">//     (it was declared at the beginning of this function &quot;TH1F* hist = NULL;&quot;   </span>
+<a id="__codelineno-3-137" name="__codelineno-3-137" href="#__codelineno-3-137"></a><span class="w">  </span><span class="c1">//     Once you have a valid pointer to &quot;hist&quot;, add the technical lines below.</span>
+<a id="__codelineno-3-138" name="__codelineno-3-138" href="#__codelineno-3-138"></a>
+<a id="__codelineno-3-139" name="__codelineno-3-139" href="#__codelineno-3-139"></a>
+<a id="__codelineno-3-140" name="__codelineno-3-140" href="#__codelineno-3-140"></a><span class="w">  </span><span class="n">hist</span><span class="o">-&gt;</span><span class="n">SetDirectory</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// remove ownerhip from an external file</span>
+<a id="__codelineno-3-141" name="__codelineno-3-141" href="#__codelineno-3-141"></a><span class="w">  </span><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="n">histClone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TH1F</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">hist</span><span class="o">-&gt;</span><span class="n">Clone</span><span class="p">());</span><span class="w"> </span><span class="c1">// yes, I have to clone here</span>
+<a id="__codelineno-3-142" name="__codelineno-3-142" href="#__codelineno-3-142"></a>
+<a id="__codelineno-3-143" name="__codelineno-3-143" href="#__codelineno-3-143"></a><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">baseList</span><span class="p">;</span><span class="w"> </span><span class="c1">// release back the memory</span>
+<a id="__codelineno-3-144" name="__codelineno-3-144" href="#__codelineno-3-144"></a>
+<a id="__codelineno-3-145" name="__codelineno-3-145" href="#__codelineno-3-145"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">histClone</span><span class="p">;</span>
+<a id="__codelineno-3-146" name="__codelineno-3-146" href="#__codelineno-3-146"></a>
+<a id="__codelineno-3-147" name="__codelineno-3-147" href="#__codelineno-3-147"></a><span class="p">}</span><span class="w"> </span><span class="c1">// end of TH1F* GetHistogramWithWeights(...)</span>
+</code></pre></div>
+<h4 id="5-usage-of-the-ccdb-object-in-analysis-task">5. Usage of the "ccdb" object in analysis task.</h4>
+<p>To be able to use the "ccdb" object in your analysis task, add the following line in the preamble among other <strong><em>include</em></strong> directives:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;CCDB/BasicCCDBManager.h&gt;</span>
+</code></pre></div>
+Then afterward in the code,  add this line just after you have started the <strong><em>struct</em></strong> definition of your analysis task:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Service</span><span class="o">&lt;</span><span class="n">ccdb</span><span class="o">::</span><span class="n">BasicCCDBManager</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ccdb</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div></p>
+<p>After these additions., you call the above function <strong><em>TH1F* GetHistogramWithWeights(...)</em></strong> in your analysis code to initialize the data member <strong><em>histWeights</em></strong> (introduced in 1. above) as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">histWeights</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetHistogramWithWeights</span><span class="p">(</span><span class="n">cfFileWithWeights</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;some-run-number&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>After that, you can use at runtime information from <strong><em>histWeights</em></strong> which was initialized with information from an external ROOT file. At the end of the analysis, <strong><em>histWeights</em></strong> will be automaticaly saved in the output of your analysis alongside other data members.</p>
+<h4 id="6-function-tobject-getobjectfromlist">6. function TObject* GetObjectFromList(...)</h4>
+<p>Finally, the promised implementation of the utility function GetObjectFromList(...) is below. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct <a href="TBI">link</a>.  Incorporate this function's implementation to your analysis task as well:</p>
+<div class="highlight"><span class="filename">File src/cpp/GetObjectFromList.cpp</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">TObject</span><span class="o">*</span><span class="w"> </span><span class="nf">GetObjectFromList</span><span class="p">(</span><span class="n">TList</span><span class="o">*</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">objectName</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w"> </span><span class="c1">// Last update: 20261018 </span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w"> </span><span class="c1">// Get TObject pointer from TList, even if it&#39;s in some nested TList. </span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w"> </span><span class="c1">// Foreseen to be used to fetch histograms or profiles from files directly. </span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w"> </span><span class="c1">// Some ideas taken from TCollection::ls()</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w"> </span><span class="c1">// If you have added histograms directly to files (without TList&#39;s), then you can fetch them directly with</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w"> </span><span class="c1">// file-&gt;Get(&quot;hist-name&quot;).</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w"> </span><span class="c1">// Example usage: TH1D *hist = (TH1D*) GetObjectFromList(&quot;some-valid-TList-pointer&quot;,&quot;some-object-name&quot;);</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w"> </span><span class="c1">// Insanity checks:</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">  </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">objectName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">  </span><span class="n">LOGF</span><span class="p">(</span><span class="n">fatal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\033</span><span class="s">[1;31m%s at line %d</span><span class="se">\033</span><span class="s">[0m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w"> </span><span class="c1">// The object is in the current base list:</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w"> </span><span class="n">TObject</span><span class="o">*</span><span class="w"> </span><span class="n">objectFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="n">objectName</span><span class="p">);</span><span class="w"> </span><span class="c1">// the final object I am after</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">objectFinal</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">objectFinal</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w"> </span><span class="c1">// Otherwise, search for the object recursively in the nested lists:</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w"> </span><span class="n">TObject</span><span class="o">*</span><span class="w"> </span><span class="n">objectIter</span><span class="p">;</span><span class="w"> </span><span class="c1">// iterator object in the loop below</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w"> </span><span class="n">TIter</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">objectIter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">()))</span><span class="w"> </span><span class="c1">// double round braces are to silence the warnings</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TString</span><span class="p">(</span><span class="n">objectIter</span><span class="o">-&gt;</span><span class="n">ClassName</span><span class="p">()).</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">&quot;TList&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">   </span><span class="n">objectFinal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetObjectFromList</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">TList</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">objectIter</span><span class="p">),</span><span class="w"> </span><span class="n">objectName</span><span class="p">);</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">objectFinal</span><span class="p">)</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">objectFinal</span><span class="p">;</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// while(objectIter = next())</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="p">}</span><span class="w"> </span><span class="c1">// TObject* GetObjectFromList(...)</span>
+</code></pre></div>
+<p>TBC 20261018</p>
+<p>To upload a file in CCDB, I sent you the shell function UploadFileToCCDB in a separate email</p>
+<p>The very same technique will work later in the online analysis using Hyperloop, to fetch efficiency corrections at run-time from an external file (only in this case it's <strong>mandatory</strong> to use CCDB access).</p>
+<p>For bookkeeping sake, set the title of your data member histogram <code>histWeights</code> to the string stored in your configurable <code>cfFileWithWeights</code>.</p>
+<p>That's all in this email, please start working on this, and let me know how far you've got. Please have the same file weights.root (see 2/ above) in some local dir, then copy it to AliEn, and upload it to CCDB. Ideally, for all three cases, you should be able to access histogram histWithEfficiencyCorrections from that file just by modifying the path in the JSON configurable "cfFileWithWeights", initialize your data member histogram histWeights with its content, and save it in the output of your analysis. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
