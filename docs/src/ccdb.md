@@ -66,7 +66,7 @@ The main point behind the above convention in the JSON config of specifying the 
 
 
 #### 4. function TH1F* GetHistogramWithWeights(...)
-To fetch automatically in your analysis task in O2Physics a histogram with efficiency corrections from an external ROOT file, for any of the three cases of interest mentioned above (local, CCDB, and AliEn), consider incorporating the function **_TH1F* GetHistogramWithWeights(...)_** below into your analysis task. The latest version of the code can be obtained directly from [O2Tutorial](https://github.com/abilandz/O2Tutorial) repository, by following this direct [link](TBI).  The function is implemented semi-schematically, but it's trivial to finalize yourself all the remaining details:
+To fetch automatically in your analysis task in O2Physics a histogram with efficiency corrections from an external ROOT file, for any of the three cases of interest mentioned above (local, CCDB, and AliEn), consider incorporating the function **_TH1F* GetHistogramWithWeights(...)_** below into your analysis task. The latest version of the code can be obtained directly from [O2Tutorial](https://github.com/abilandz/O2Tutorial) repository, by following this direct [link](https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetHistogramWithWeights.cpp).  The function is implemented semi-schematically, but it's trivial to finalize yourself all the remaining details:
 
 ```cpp title="File: src/cpp/GetHistogramWithWeights.cpp"
 --8<-- "src/cpp/GetHistogramWithWeights.cpp"
@@ -94,7 +94,7 @@ After that, you can use at runtime information from **_histWeights_** which was 
 
 
 #### 6. function TObject* GetObjectFromList(...)
-Finally, the promised implementation of the utility function GetObjectFromList(...) is below. The latest version of the code can be obtained directly from [O2Tutorial](https://github.com/abilandz/O2Tutorial) repository, by following this direct [link](TBI).  Incorporate this function's implementation to your analysis task as well:
+Finally, the promised implementation of the utility function GetObjectFromList(...) is below. The latest version of the code can be obtained directly from [O2Tutorial](https://github.com/abilandz/O2Tutorial) repository, by following this direct [link](https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetObjectFromList.cpp).  Incorporate this function's implementation to your analysis task as well:
 
 ```cpp title="File src/cpp/GetObjectFromList.cpp"
 --8<-- "src/cpp/GetObjectFromList.cpp"
