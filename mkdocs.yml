@@ -1,0 +1,46 @@
+site_name: "O2 tutorial (stripped-down and personalized version)"
+
+theme:
+#  name: mkdocs
+  name: material
+#  name: readthedocs
+  favicon: Figures/o2logo.png
+  logo: Figures/o2logo.png
+
+# common navigation settings for all themes:
+#nav:
+#  - Home: index.md
+
+# workaround to get figures via ./Figures, and not via ../Figures, even though the former is a correct relative path"
+use_directory_urls: false
+
+# common extra CSS for all themes:
+extra_css:
+  - stylesheets/extra.css
+
+# specific settings for individually themes:
+hooks:
+  - docs/hooks/conditional_nav.py # navigation settings but conditional and specific for each theme
+  - docs/hooks/conditional_css.py # extra CSS but conditional and specific for each theme
+
+# support for math and code syntax highlihting:
+markdown_extensions:
+  - pymdownx.arithmatex: # math
+      generic: true
+  - pymdownx.highlight: # syntax highlighting
+      anchor_linenums: true
+  - pymdownx.superfences: # syntax highlighting
+      custom_fences: # support for mermaid diagrams
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets: # to inline in markdown code block a code from an external file
+      base_path: # now also the relative paths will work, relative to docs/
+        - docs
+  - attr_list # to resize figures
+  - md_in_html # to resize figures
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js # online math
+#  - javascripts/tex-mml-chtml.js # offline math
