@@ -1,9 +1,7 @@
 
 
 # Access to CCDB
-**Last update**: 20261018-1
-
-
+**Last update**: 20261019-1
 
 In this part of O2 tutorial, you will learn the technique for accessing a histogram (or some other ROOT object) at run-time in your analysis task in O2Physics from an external ROOT file, and saving that histogram in the output file of your analysis. Typically, this way you access a histogram with efficiency corrections from an external ROOT file, use information from it during analysis, and then save that histogram in the output file of your analysis. This last part is not a trivial duplication of histograms &mdash; it is important that you can easily trace back which efficiency corrections you have used in a given analysis, and that is easiest to achieve without additional bookkeeping if you save that histogram in the output of that analysis.
 
@@ -47,6 +45,7 @@ Add a new configurable to your analysis code using the following code snippet:
 ```cpp
 Configurable<std::string> cfFileWithWeights{"cfFileWithWeights", "/home/abilandz/DatasetsO2/weights.root", "path to external ROOT file which holds all particle weights"};
 ```
+For bookkeeping sake, set the title of your data member histogram **_histWeights_** to the string stored in your configurable, namely "cfFileWithWeights".
 
 Then, in a JSON configuration file, you would need to have the corresponding new field when you are configuring your analysis task:
 
@@ -94,20 +93,47 @@ After that, you can use at runtime information from **_histWeights_** which was 
 
 
 #### 6. function TObject* GetObjectFromList(...)
-Finally, the promised implementation of the utility function GetObjectFromList(...) is below. The latest version of the code can be obtained directly from [O2Tutorial](https://github.com/abilandz/O2Tutorial) repository, by following this direct [link](https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetObjectFromList.cpp).  Incorporate this function's implementation to your analysis task as well:
+Finally, the implementation of the utility function **_TObject* GetObjectFromList(...)_** is below. The latest version of the code can be obtained directly from [O2Tutorial](https://github.com/abilandz/O2Tutorial) repository, by following this direct link [GetObjectFromList.cpp](https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetObjectFromList.cpp).  Incorporate this function's implementation to your analysis task as well:
 
 ```cpp title="File src/cpp/GetObjectFromList.cpp"
 --8<-- "src/cpp/GetObjectFromList.cpp"
 ```
 
 
-TBC 20261018-2 ...
+#### 7. Shell utility function UploadFileToCCDB
+To upload a file in CCDB, the **Bash** shell utility function **UploadFileToCCDB** can be used. That function is implemented, alongside other O2 utility functions in [O2Tutorial](https://github.com/abilandz/O2Tutorial) repository, and the latest version of the code can be obtained directly by following this direct link [O2.sh](https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/scripts/O2.sh). 
+
+To use it, follow these steps:
+
+a) Initialize locally the O2 environment using shell function **MenuO2**
+
+b) Source the implementation of all functions:
+	```bash
+	$ source O2.sh # adapt the path to this file
+    ```
+
+c) Dump the config file of function **UploadFileToCCDB** in the current working directory. To execute this step, you must have a valid certificate in place to access ALICE Grid (see this section TBI 20261019 finalize this part):
+	```bash
+	$ UploadFileToCCDB -h
+	```
+
+d) The config file "UploadFileToCCDB.config" have the following variables and example content:
+```shell title="File src/scripts/UploadFileToCCDB.config"
+--8<-- "src/scripts/UploadFileToCCDB.config"
+```
+	It is mandatory to replace "a/abilandz" with your user credentials in AliEn (both in variables "RelativePath" and in "AliEnDir_CCDB"), and adapt a path to the local file you want to upload (in variable "File").
+
+e) After the config file "UploadFileToCCDB.config" is edited, simply execute
+	```bash
+	$ UploadFileToCCDB UploadFileToCCDB.config
+	```
 
 
-To upload a file in CCDB, I sent you the shell function UploadFileToCCDB in a separate email
+#### 8. CCDB challenge
+a) Prepare example histogram with efficiency corrections, and save it to the file "weights.root" (see Section 2. above). 
 
-The very same technique will work later in the online analysis using Hyperloop, to fetch efficiency corrections at run-time from an external file (only in this case it's **mandatory** to use CCDB access).
+b) Copy over that file "weights.root" into some local dir, then to AliEn, and finally upload it to CCDB. 
 
-For bookkeeping sake, set the title of your data member histogram ```histWeights``` to the string stored in your configurable ```cfFileWithWeights```.
+c) Ideally, for all three cases, and given the above implementation, you should be able to access histogram with efficiency corrections from that file just by modifying the path in the JSON configurable "cfFileWithWeights", initialize your data member histogram **_histWeights_** with its content, and save it in the output of your analysis. 
 
-That's all in this email, please start working on this, and let me know how far you've got. Please have the same file weights.root (see 2/ above) in some local dir, then copy it to AliEn, and upload it to CCDB. Ideally, for all three cases, you should be able to access histogram histWithEfficiencyCorrections from that file just by modifying the path in the JSON configurable "cfFileWithWeights", initialize your data member histogram histWeights with its content, and save it in the output of your analysis. 
+d) The very same technique will work later in the online analysis using Hyperloop, to fetch efficiency corrections at run-time from an external file &mdash; only in that case it's **mandatory** to use CCDB access. 
