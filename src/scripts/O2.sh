@@ -97,7 +97,7 @@ function Date
 
 function InstallationO2
 {
- # Last update: 20261019
+ # Last update: 20261019-1
 
  # Use this function to compile O2 software from scratch, using aliBuild.
  # If variable InstallationO2_TopLevelBuildDir is set before calling the function, local var TopLevelBuildDir is initialized with that value. 
@@ -170,7 +170,7 @@ here-doc
 
  local nJobs
 
- if [[ -n $nJobs ]]; then
+ if [[ -n $InstallationO2_nJobs ]]; then
   # 1. if user has defined before calling this function variable InstallationO2_nJobs, use its content to initialize nJobs:
   nJobs=$InstallationO2_nJobs
  else
@@ -227,8 +227,9 @@ here-doc
  Yellow "\n=> Downloading and initializing the specified O2 software .... $(Date)"
  cd $TopLevelBuildDir # yes, cd first in top-level build dir
  case $AliBuildVersion in 
-  # I use the case statement here, leaving a room open that for some other aliBuild version, default options might be set the other way
-  "v1.11.3"|"1.16.1"|"1.17.1"|"1.17.11"|"1.17.12"|"1.17.18")
+  # I use the case statement here, leaving a room open that for some other aliBuild version, default options might be set the other way.
+  # To upgrade aliBuild to the latest version, use:  sudo pip install alibuild --upgrade
+  "v1.11.3"|"1.16.1"|"1.17.1"|"1.17.11"|"1.17.12"|"1.17.18"|"1.17.44"|"1.17.48")
     aliBuild init O2@dev --defaults o2 
     aliBuild init O2Physics@${Tag} --defaults o2 
   ;;
@@ -256,7 +257,7 @@ here-doc
  local Started=$(Date)
  case $AliBuildVersion in 
   # I use the case statement here, leaving a room open that for some other aliBuild version, default options might be set the other way
-  "v1.11.3"|"1.16.1"|"1.17.1"|"1.17.11"|"1.17.12"|"1.17.18")
+  "v1.11.3"|"1.16.1"|"1.17.1"|"1.17.11"|"1.17.12"|"1.17.18"|"1.17.44"|"1.17.48")
     # To build without some specific package, use a flag e.g. --disable DPMJET,GEANT4
     aliBuild build O2Physics -j $nJobs --defaults o2 --debug 2>&1 | tee $TopLevelBuildDir/build-${Tag}.log
   ;;
