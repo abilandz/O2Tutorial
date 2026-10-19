@@ -509,6 +509,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#7-shell-utility-function-uploadfiletoccdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Shell utility function UploadFileToCCDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ccdb-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. CCDB challenge
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -727,6 +749,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#7-shell-utility-function-uploadfiletoccdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Shell utility function UploadFileToCCDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ccdb-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. CCDB challenge
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -745,7 +789,7 @@
 
 
 <h1 id="access-to-ccdb">Access to CCDB</h1>
-<p><strong>Last update</strong>: 20261018-1</p>
+<p><strong>Last update</strong>: 20261019-1</p>
 <p>In this part of O2 tutorial, you will learn the technique for accessing a histogram (or some other ROOT object) at run-time in your analysis task in O2Physics from an external ROOT file, and saving that histogram in the output file of your analysis. Typically, this way you access a histogram with efficiency corrections from an external ROOT file, use information from it during analysis, and then save that histogram in the output file of your analysis. This last part is not a trivial duplication of histograms &mdash; it is important that you can easily trace back which efficiency corrections you have used in a given analysis, and that is easiest to achieve without additional bookkeeping if you save that histogram in the output of that analysis.</p>
 <p>To master the technique, follow these steps below...</p>
 <h4 id="1-adding-new-data-member-in-the-analysis-task">1. Adding new data member in the analysis task.</h4>
@@ -774,8 +818,9 @@
 <p>It doesn't matter for the time being which content you will have in the above example histograms <strong><em>"histWithEfficiencyCorrections_*"</em></strong> , what matters is that now you develop the code in your O2Physics analysis task, which will access, use in the analysis at run-time, and copy that histogram from an external ROOT file, into your data member <strong><em>histWeights</em></strong> , and then save it automatically in the output file "AnalysisResults.root" of your analysis, alongside of other booked objects in the analysis task. </p>
 <h4 id="3-new-configurable">3. New configurable.</h4>
 <p>Add a new configurable to your analysis code using the following code snippet:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Configurable</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cfFileWithWeights</span><span class="p">{</span><span class="s">&quot;cfFileWithWeights&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/abilandz/DatasetsO2/weights.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;path to external ROOT file which holds all particle weights&quot;</span><span class="p">};</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Configurable</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cfFileWithWeights</span><span class="p">{</span><span class="s">&quot;cfFileWithWeights&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/abilandz/DatasetsO2/weights.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;path to external ROOT file which holds all particle weights&quot;</span><span class="p">};</span>
 </code></pre></div>
+For bookkeeping sake, set the title of your data member histogram <strong><em>histWeights</em></strong> to the string stored in your configurable, namely "cfFileWithWeights".</p>
 <p>Then, in a JSON configuration file, you would need to have the corresponding new field when you are configuring your analysis task:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w"> </span><span class="nt">&quot;cfFileWithWeights&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/abilandz/DatasetsO2/weights.root&quot;</span><span class="p">,</span>
 </code></pre></div>
@@ -954,7 +999,7 @@ Then afterward in the code,  add this line just after you have started the <stro
 </code></pre></div>
 <p>After that, you can use at runtime information from <strong><em>histWeights</em></strong> which was initialized with information from an external ROOT file. At the end of the analysis, <strong><em>histWeights</em></strong> will be automaticaly saved in the output of your analysis alongside other data members.</p>
 <h4 id="6-function-tobject-getobjectfromlist">6. function TObject* GetObjectFromList(...)</h4>
-<p>Finally, the promised implementation of the utility function GetObjectFromList(...) is below. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetObjectFromList.cpp">link</a>.  Incorporate this function's implementation to your analysis task as well:</p>
+<p>Finally, the implementation of the utility function <strong><em>TObject* GetObjectFromList(...)</em></strong> is below. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct link <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetObjectFromList.cpp">GetObjectFromList.cpp</a>.  Incorporate this function's implementation to your analysis task as well:</p>
 <div class="highlight"><span class="filename">File src/cpp/GetObjectFromList.cpp</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">TObject</span><span class="o">*</span><span class="w"> </span><span class="nf">GetObjectFromList</span><span class="p">(</span><span class="n">TList</span><span class="o">*</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">objectName</span><span class="p">)</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">{</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w"> </span><span class="c1">// Last update: 20261018 </span>
@@ -1000,11 +1045,49 @@ Then afterward in the code,  add this line just after you have started the <stro
 <a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a>
 <a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="p">}</span><span class="w"> </span><span class="c1">// TObject* GetObjectFromList(...)</span>
 </code></pre></div>
-<p>TBC 20261018-2 ...</p>
-<p>To upload a file in CCDB, I sent you the shell function UploadFileToCCDB in a separate email</p>
-<p>The very same technique will work later in the online analysis using Hyperloop, to fetch efficiency corrections at run-time from an external file (only in this case it's <strong>mandatory</strong> to use CCDB access).</p>
-<p>For bookkeeping sake, set the title of your data member histogram <code>histWeights</code> to the string stored in your configurable <code>cfFileWithWeights</code>.</p>
-<p>That's all in this email, please start working on this, and let me know how far you've got. Please have the same file weights.root (see 2/ above) in some local dir, then copy it to AliEn, and upload it to CCDB. Ideally, for all three cases, you should be able to access histogram histWithEfficiencyCorrections from that file just by modifying the path in the JSON configurable "cfFileWithWeights", initialize your data member histogram histWeights with its content, and save it in the output of your analysis. </p>
+<h4 id="7-shell-utility-function-uploadfiletoccdb">7. Shell utility function UploadFileToCCDB</h4>
+<p>To upload a file in CCDB, the <strong>Bash</strong> shell utility function <strong>UploadFileToCCDB</strong> can be used. That function is implemented, alongside other O2 utility functions in <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, and the latest version of the code can be obtained directly by following this direct link <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/scripts/O2.sh">O2.sh</a>. </p>
+<p>To use it, follow these steps:</p>
+<p>a) Initialize locally the O2 environment using shell function <strong>MenuO2</strong></p>
+<p>b) Source the implementation of all functions:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>O2.sh<span class="w"> </span><span class="c1"># adapt the path to this file</span>
+</code></pre></div></p>
+<p>c) Dump the config file of function <strong>UploadFileToCCDB</strong> in the current working directory. To execute this step, you must have a valid certificate in place to access ALICE Grid (see this section TBI 20261019 finalize this part):
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>UploadFileToCCDB<span class="w"> </span>-h
+</code></pre></div></p>
+<p>d) The config file "UploadFileToCCDB.config" have the following variables and example content:
+<div class="highlight"><span class="filename">File src/scripts/UploadFileToCCDB.config</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Path to the file which will be uploaded:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">local</span><span class="w"> </span><span class="nv">File</span><span class="o">=</span><span class="s2">&quot;../root/labels.root&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Relative path to the top-level directory in CCDB where </span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># file will be uploaded (relative to CCDB host below):</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nb">local</span><span class="w"> </span><span class="nv">RelativePath</span><span class="o">=</span><span class="s2">&quot;Users/a/abilandz/test-tmp&quot;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># CCDB host:</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nb">local</span><span class="w"> </span><span class="nv">Host_CCDB</span><span class="o">=</span><span class="s2">&quot;alice-ccdb.cern.ch&quot;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># Corresponding AliEn dir:</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nb">local</span><span class="w"> </span><span class="nv">AliEnDir_CCDB</span><span class="o">=</span><span class="s2">&quot;/alice/data/CCDB/Users/a/abilandz&quot;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># Key:</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nb">local</span><span class="w"> </span><span class="nv">Key</span><span class="o">=</span><span class="s2">&quot;ccdb_object&quot;</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1"># Start timestamp of validity (set to -1 or to 0 for valid as of now):</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="nb">local</span><span class="w"> </span><span class="nv">StartTimeStamp</span><span class="o">=</span><span class="s2">&quot;-1&quot;</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="c1"># End timestamp of validity in days from start timestamp</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="c1"># (set e.g. 7 for 7 days):</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="nb">local</span><span class="w"> </span><span class="nv">EndTimeStamp</span><span class="o">=</span><span class="s2">&quot;7&quot;</span>
+</code></pre></div>
+    It is mandatory to replace "a/abilandz" with your user credentials in AliEn (both in variables "RelativePath" and in "AliEnDir_CCDB"), and adapt a path to the local file you want to upload (in variable "File").</p>
+<p>e) After the config file "UploadFileToCCDB.config" is edited, simply execute
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>UploadFileToCCDB<span class="w"> </span>UploadFileToCCDB.config
+</code></pre></div></p>
+<h4 id="8-ccdb-challenge">8. CCDB challenge</h4>
+<p>a) Prepare example histogram with efficiency corrections, and save it to the file "weights.root" (see Section 2. above). </p>
+<p>b) Copy over that file "weights.root" into some local dir, then to AliEn, and finally upload it to CCDB. </p>
+<p>c) Ideally, for all three cases, and given the above implementation, you should be able to access histogram with efficiency corrections from that file just by modifying the path in the JSON configurable "cfFileWithWeights", initialize your data member histogram <strong><em>histWeights</em></strong> with its content, and save it in the output of your analysis. </p>
+<p>d) The very same technique will work later in the online analysis using Hyperloop, to fetch efficiency corrections at run-time from an external file &mdash; only in that case it's <strong>mandatory</strong> to use CCDB access. </p>
 
 
 
