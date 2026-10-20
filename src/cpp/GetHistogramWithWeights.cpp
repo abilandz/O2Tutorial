@@ -88,7 +88,7 @@ TH1F* GetHistogramWithWeights(const char* filePath, const char* runNumber)
    // after that we can use the common code for all 3 cases (local, AliEn, CCDB),
    // that common code is further below.
 
-   } else
+   } else {
 
 ​    // File you want to access is on your local computer. 
     // In this branch, there is a special code to support file access in that case.
