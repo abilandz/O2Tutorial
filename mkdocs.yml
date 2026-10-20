@@ -7,6 +7,10 @@ theme:
   favicon: Figures/o2logo.png
   logo: Figures/o2logo.png
 
+  features:
+    - content.code.copy
+    - content.code.select   # Adds the line range selection button
+
 # common navigation settings for all themes:
 #nav:
 #  - Home: index.md
@@ -29,6 +33,8 @@ markdown_extensions:
       generic: true
   - pymdownx.highlight: # syntax highlighting
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.superfences: # syntax highlighting
       custom_fences: # support for mermaid diagrams
         - name: mermaid
