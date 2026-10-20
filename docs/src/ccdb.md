@@ -1,7 +1,7 @@
 
 
 # Access to CCDB
-**Last update**: 20261019-2
+**Last update**: 20261020-1
 
 In this part of O2 tutorial, you will learn the technique for accessing a histogram (or some other ROOT object) at run-time in your analysis task in O2Physics from an external ROOT file, and saving that histogram in the output file of your analysis. Typically, this way you access a histogram with efficiency corrections from an external ROOT file, use information from it during analysis, and then save that histogram in the output file of your analysis. This last part is not a trivial duplication of histograms &mdash; it is important that you can easily trace back which efficiency corrections you have used in a given analysis, and that is easiest to achieve without additional bookkeeping if you save that histogram in the output of that analysis.
 
@@ -57,11 +57,17 @@ An external ROOT file "weights.root" can be in three different locations, and af
 
 1. on your local computer &mdash; just use an absolute or relative path to it in the above JSON field
 
-2. in your home directory in CCDB ("Calibration and Conditions Database"). This is the default, and therefore most important, way to store efficiency corrections. For this case, prepend a file path in the above JSON field with a string "/alice-ccdb.cern.ch/"
+2. in your home directory in CCDB ("Calibration and Conditions Database"). This is the default, and therefore most important, way to store efficiency corrections. To inspect the content of home directory in CCDB, one can open the following URL address in the browser
+
+    ```url 
+    https://alice-ccdb.cern.ch/browse/Users/a/abilandz/
+    ```
+
+    Just replace in the URL address above "a/abilandz/" with your credentials, and in that browser, a valid certificate needs to be installed. For this case, prepend a file path in the above JSON field with a string "/alice-ccdb.cern.ch/"
 
 3. in your home directory in AliEn. This works, but it is not allowed to use this approach later in a large-scale data analysis in Hyperloop. Therefore, use this only in a local analysis for testing purposes. For this case, prepend a file path in the above JSON field with a string "/alice/cern.ch/"
 
-The main point behind the above convention in the JSON config of specifying the path of an external file is that now in the analysis code it will be automatically determined from that path whether that external file is on a local compute, in CCDB, or in AliEn. Correspondingly, different code needs to be used to access that file, and that is provided with the function **_TH1F* GetHistogramWithWeights(...)_**, which is introduced next
+The main point behind the above convention in the JSON config of specifying the path of an external file is that now in the analysis code it will be automatically determined from that path whether that external file is on a local compute, in CCDB, or in AliEn. Correspondingly, different code needs to be used to access that file, and that is provided with the function **_TH1F* GetHistogramWithWeights(...)_**, which is introduced next.
 
 
 #### 4. function TH1F* GetHistogramWithWeights(...)
