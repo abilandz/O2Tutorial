@@ -14,6 +14,7 @@ def on_config(config):
                 {"3: Task skeleton": "src/skeleton.md"},
                 {"4: Adding cuts": "src/cuts.md"},
                 {"5: Access to CCDB": "src/ccdb.md"},
+                {"6: O2 coding style and rules, O2linter, etc.": "src/linters.md"},
             ]},
             {"Challenges": [  
                 {"Challenge 1": "Challenges/Challenge_1.md"},
