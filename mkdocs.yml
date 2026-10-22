@@ -11,6 +11,10 @@ theme:
     - content.code.copy
     - content.code.select   # Adds the line range selection button
 
+  palette:
+    primary: red # <This changes the header bar color
+    accent: red
+
 # common navigation settings for all themes:
 #nav:
 #  - Home: index.md

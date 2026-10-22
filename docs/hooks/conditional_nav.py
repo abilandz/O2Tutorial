@@ -8,15 +8,16 @@ def on_config(config):
     if theme_name == "material": # Navigation for "Material"
         config.nav = [
             {"Introduction": "index.md"}, # this file "index.md" must be in docs/
-            {"Tutorials": [  
+            {"Tutorials": [
                 {"1: Getting started": "src/start.md"},
                 {"2: Installation": "src/installation.md"},
                 {"3: Task skeleton": "src/skeleton.md"},
                 {"4: Adding cuts": "src/cuts.md"},
                 {"5: Access to CCDB": "src/ccdb.md"},
                 {"6: O2 coding style and rules, O2linter, etc.": "src/linters.md"},
+                {"7: How to commit the local code to central O2 repository": "src/commit.md"},
             ]},
-            {"Challenges": [  
+            {"Challenges": [
                 {"Challenge 1": "Challenges/Challenge_1.md"},
                 {"Challenge 2": "Challenges/Challenge_2.md"},
             ]},
