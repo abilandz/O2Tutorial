@@ -13,7 +13,7 @@ theme:
 
   palette:
     primary: red # <This changes the header bar color
-    accent: red
+    accent: indigo
 
 # common navigation settings for all themes:
 #nav:
