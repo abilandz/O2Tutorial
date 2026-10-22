@@ -29,6 +29,9 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
       
 
 
@@ -59,7 +62,12 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -110,8 +118,8 @@
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -570,6 +578,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="commit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7: How to commit the local code to central O2 repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -869,9 +905,9 @@ For bookkeeping sake, set the title of your data member histogram <strong><em>hi
 <p>in your home directory in AliEn. This works, but it is not allowed to use this approach later in a large-scale data analysis in Hyperloop. Therefore, use this only in a local analysis for testing purposes. For this case, prepend a file path in the above JSON field with a string "/alice/cern.ch/"</p>
 </li>
 </ol>
-<p>The main point behind the above convention in the JSON config of specifying the path of an external file is that now in the analysis code it will be automatically determined from that path whether that external file is on a local compute, in CCDB, or in AliEn. Correspondingly, different code needs to be used to access that file, and that is provided with the function <strong><em>TH1F* GetHistogramWithWeights(...)</em></strong>, which is introduced next.</p>
+<p>The main point behind the above convention in the JSON config of specifying the path of an external file is that now in the analysis code it will be automatically determined from that path whether that external file is on a local compute, in CCDB, or in AliEn. Correspondingly, different code needs to be used to access that file, and that is provided with the function *<em>_TH1F</em> GetHistogramWithWeights(...)_**, which is introduced next.</p>
 <h4 id="4-function-th1f-gethistogramwithweights">4. function TH1F* GetHistogramWithWeights(...)</h4>
-<p>To fetch automatically in your analysis task in O2Physics a histogram with efficiency corrections from an external ROOT file, for any of the three cases of interest mentioned above (local, CCDB, and AliEn), consider incorporating the function <strong><em>TH1F* GetHistogramWithWeights(...)</em></strong> below into your analysis task. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetHistogramWithWeights.cpp">link</a>.  The function is implemented semi-schematically, but it's trivial to finalize yourself all the remaining details:</p>
+<p>To fetch automatically in your analysis task in O2Physics a histogram with efficiency corrections from an external ROOT file, for any of the three cases of interest mentioned above (local, CCDB, and AliEn), consider incorporating the function <em><em>_TH1F</em> GetHistogramWithWeights(...)_</em>* below into your analysis task. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetHistogramWithWeights.cpp">link</a>.  The function is implemented semi-schematically, but it's trivial to finalize yourself all the remaining details:</p>
 <div class="language-cpp highlight"><span class="filename">File: src/cpp/GetHistogramWithWeights.cpp</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="nf">GetHistogramWithWeights</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">runNumber</span><span class="p">)</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="c1">// Last update: 20261018 </span>
@@ -1027,12 +1063,12 @@ For bookkeeping sake, set the title of your data member histogram <strong><em>hi
 Then afterward in the code,  add this line just after you have started the <strong><em>struct</em></strong> definition of your analysis task:
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Service</span><span class="o">&lt;</span><span class="n">ccdb</span><span class="o">::</span><span class="n">BasicCCDBManager</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ccdb</span><span class="p">;</span><span class="w"> </span>
 </span></code></pre></div></p>
-<p>After these additions., you call the above function <strong><em>TH1F* GetHistogramWithWeights(...)</em></strong> in your analysis code to initialize the data member <strong><em>histWeights</em></strong> (introduced in 1. above) as follows:</p>
+<p>After these additions., you call the above function <em><em>_TH1F</em> GetHistogramWithWeights(...)_</em>* in your analysis code to initialize the data member <strong><em>histWeights</em></strong> (introduced in 1. above) as follows:</p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">histWeights</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetHistogramWithWeights</span><span class="p">(</span><span class="n">cfFileWithWeights</span><span class="p">,</span><span class="w"> </span><span class="s">"some-run-number"</span><span class="p">);</span>
 </span></code></pre></div>
 <p>After that, you can use at runtime information from <strong><em>histWeights</em></strong> which was initialized with information from an external ROOT file. At the end of the analysis, <strong><em>histWeights</em></strong> will be automaticaly saved in the output of your analysis alongside other data members.</p>
 <h4 id="6-function-tobject-getobjectfromlist">6. function TObject* GetObjectFromList(...)</h4>
-<p>Finally, the implementation of the utility function <strong><em>TObject* GetObjectFromList(...)</em></strong> is below. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct link <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetObjectFromList.cpp">GetObjectFromList.cpp</a>.  Incorporate this function's implementation to your analysis task as well:</p>
+<p>Finally, the implementation of the utility function <em><em>_TObject</em> GetObjectFromList(...)_</em>* is below. The latest version of the code can be obtained directly from <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct link <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/GetObjectFromList.cpp">GetObjectFromList.cpp</a>.  Incorporate this function's implementation to your analysis task as well:</p>
 <div class="language-cpp highlight"><span class="filename">File src/cpp/GetObjectFromList.cpp</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">TObject</span><span class="o">*</span><span class="w"> </span><span class="nf">GetObjectFromList</span><span class="p">(</span><span class="n">TList</span><span class="o">*</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">objectName</span><span class="p">)</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">{</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span><span class="c1">// Last update: 20261018 </span>

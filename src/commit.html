@@ -1,0 +1,957 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="linters.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../Figures/o2logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>7: How to commit the local code to central O2 repository - O2 tutorial (stripped-down and personalized version)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/material/bootstrap-like-tables.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-commit-the-local-code-to-central-o2-repository" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="O2 tutorial (stripped-down and personalized version)" class="md-header__button md-logo" aria-label="O2 tutorial (stripped-down and personalized version)" data-md-component="logo">
+      
+  <img src="../Figures/o2logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            O2 tutorial (stripped-down and personalized version)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7: How to commit the local code to central O2 repository
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="O2 tutorial (stripped-down and personalized version)" class="md-nav__button md-logo" aria-label="O2 tutorial (stripped-down and personalized version)" data-md-component="logo">
+      
+  <img src="../Figures/o2logo.png" alt="logo">
+
+    </a>
+    O2 tutorial (stripped-down and personalized version)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="start.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1: Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2: Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="skeleton.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3: Task skeleton
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cuts.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4: Adding cuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ccdb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5: Access to CCDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="linters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6: O2 coding style and rules, O2linter, etc.
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7: How to commit the local code to central O2 repository
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="commit.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7: How to commit the local code to central O2 repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setting-up-the-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Setting up the GitHub account.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-forking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Forking.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-setting-up-a-passwordless-login-for-github-using-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Setting up a passwordless login for GitHub using SSH.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-propagating-changes-from-local-master-into-forked-master-on-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Propagating changes from 'local master' into 'forked master' on GitHub.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-propagating-changes-from-forked-master-on-github-into-central-master-on-github-aka-new-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Propagating changes from 'forked master' on GitHub into 'central master' on GitHub (a.k.a. 'New Pull Request')
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenges
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Challenges
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Challenges/Challenge_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenge 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Challenges/Challenge_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenge 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setting-up-the-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Setting up the GitHub account.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-forking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Forking.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-setting-up-a-passwordless-login-for-github-using-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Setting up a passwordless login for GitHub using SSH.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-propagating-changes-from-local-master-into-forked-master-on-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Propagating changes from 'local master' into 'forked master' on GitHub.
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-propagating-changes-from-forked-master-on-github-into-central-master-on-github-aka-new-pull-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Propagating changes from 'forked master' on GitHub into 'central master' on GitHub (a.k.a. 'New Pull Request')
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="how-to-commit-the-local-code-to-central-o2-repository">How to commit the local code to central O2 repository?</h1>
+<p><strong>Last update</strong>: 20261022-1</p>
+<p>Here are the steps you need to follow to commit your code from the local O2Physics repository to the centrall O2Physics repository at <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics</a>.</p>
+<p>The main point is that once your code is in the central O2Physics repository, and then shortly afterward in one of the daily release tags, your code can be used to analyze large datasets online in Hyperloop. </p>
+<p><strong>Disclaimer #1:</strong> Some of the steps below are needed only the very first time you commit your code. </p>
+<p><strong>Disclaimer #2:</strong> In addition, some steps below can be optimized and further improved using Git built-in functionalities, but I give you now the version which works, see later yourself if you want to optimize it further yourself.  </p>
+<h4 id="1-setting-up-the-github-account">1. Setting up the GitHub account.</h4>
+<p>First, in case you already do not have it, you need to create an account on <a href="https://github.com">GitHub</a> (ideally, by using the same username as you have at CERN, but that is not mandatory). </p>
+<p>After that, login in your GitHub account and authorize "ALICE Continuous Integration" to read your username so that it can be mapped to your CERN account (for more details, see the first two sections in <a href="https://alisw.github.io/git-tutorial/">https://alisw.github.io/git-tutorial/</a>.</p>
+<p>On your computer where you are developing the code in the O2Physics repository and where you can run 'git', adapt your credentials and then execute:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"&lt;Firstname&gt; &lt;Lastname&gt;"</span><span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span>&lt;your-CERN-email-address&gt;<span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.github<span class="w"> </span>&lt;your-GitHub-username&gt;
+</span></code></pre></div>
+<h4 id="2-forking">2. Forking.</h4>
+<p>In this step, you will learn how to clone the central O2Physics repository on GitHub into your own account on GitHub, a process called 'forking'. </p>
+<p>a) Go to the central O2Physics repository on GitHub by following this link <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics </a>;</p>
+<p>b) Click on the 'Fork' in the top-half-right corner (you can click only if you are already logged in GitHub, if not just click on the top on 'Sign in');</p>
+<p>c) If forking went OK, now you shall be automatically redirected to something like <a href="https://github.com/abilandz/O2Physics">https://github.com/abilandz/O2Physics</a> (adapt the username for your own account, same comments applies wherever below you see 'abilandz').
+This is your personal 'fork' for O2Physics repository, of central O2Physics repository at <a href="https://github.com/AliceO2Group/O2Physics"> https://github.com/AliceO2Group/O2Physics</a>.</p>
+<p>d) At the time you 'forked' the central repository, your own 'fork' is the 'master' version of <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics</a> at the time you did the fork. Few remarks:</p>
+<ul>
+<li>New changes in central 'master' are NOT automatically propagated into your own 'fork' &mdash;  this is summarized in your 'fork' with something like "<em>This branch is ... ahead and ... behind AliceO2Group/O2Physics:master</em>"</li>
+<li>The point of having 'fork' is the following: You can propagate changes from your local O2Physics repository directly into the online O2Physics repository, but only in your own 'fork' (certainly NOT in the central O2Physics repository). </li>
+<li>Only when you want to propagate those changes to the central repository <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics</a>, a lot of automated checks will be performed, and a person in charge needs to review and approve them </li>
+<li>In the browser, see if you want to bookmark your own 'fork', as you will be visiting this page frequently.</li>
+<li>If you have screwed-up your 'fork', or if your 'fork' is lagging too much behind the development in https://github.com/AliceO2Group/O2Physics , no worries, you can trivally always delete your 'fork', and make a new 'fork' again (or you can use built-in functionalities in <strong>Git</strong> to synchronize, investigate this further by yourself if interested &mdash; at least in the beginning, keep it simple and just delete your fork and fork it again). To delete a 'fork', just go to your 'fork' online, then click on 'Settings' (last item in the close-to-top horizontal menu), then scroll down to the 'Danger Zone' and opt for 'Delete this repository'. Then, simply go to Step 2a) again. </li>
+</ul>
+<p>To synchronize local 'master' version of O2Physics with the 'forked' master of O2Physics online in GitHub, the typical/standard workflow during code development is the following:</p>
+<ul>
+<li>Make some changes in your analysis task in the local 'master' =&gt; propagate those changes to 'forked master' online =&gt; propagate online changes from 'forked master' to the 'central master' by creating a pull request (needs several reviews and official approval)</li>
+<li>
+<p>How to establish the link between 'forked master' in GitHub, with the local 'master' (here I assume that you have checked out already on your desktop 'master' of O2Physics with the standard scripts I gave you &mdash; you do NOT need to recompile this 'master' version from scratch, you can use something like this in the shell function <strong>InstallationO2</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">InstallationO2_TopLevelBuildDir</span><span class="o">=</span>someDirectory<span class="p">;</span><span class="w"> </span><span class="nv">InstallationO2_Compile</span><span class="o">=</span>false<span class="p">;</span><span class="w"> </span>InstallationO2<span class="w"> </span>master
+</span></code></pre></div>
+</li>
+<li>
+<p>Go to the local git repository of your O2Physics 'master' (remember - you do NOT need to compile it from scratch, just check it out locally):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># use the same path as above:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>someDirectory
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 'abilandz' here is my GitHub account name, replace with yours:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>abilandz<span class="w"> </span>git@github.com:abilandz/O2Physics<span class="w"> </span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># In order to cross-check if your local 'master' is now in sync. </span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># with 'forked master' in GitHub, type:</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>git<span class="w"> </span>remote<span class="w"> </span>-v
+</span></code></pre></div>
+<p>The printout shall be like below (first two lines are your 'fork', and the last two lines are the central repository:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># if you have only the last two lines, the previous step has failed):</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>abilandz<span class="w"> </span>git@github.com:abilandz/O2Physics<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>abilandz<span class="w"> </span>git@github.com:abilandz/O2Physics<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>upstream<span class="w"> </span>https://github.com/AliceO2Group/O2Physics<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>upstream<span class="w"> </span>https://github.com/AliceO2Group/O2Physics<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+</span></code></pre></div></p>
+</li>
+</ul>
+<h4 id="3-setting-up-a-passwordless-login-for-github-using-ssh">3. Setting up a passwordless login for GitHub using SSH.</h4>
+<p>You need to perform this step if you do not want to type your password again and again when connecting to GitHub from your terminal =&gt; basically, you need to follow these online instructions:</p>
+<ul>
+<li><a href="https://help.github.com/articles/checking-for-existing-ssh-keys/">https://help.github.com/articles/checking-for-existing-ssh-keys/</a> </li>
+<li><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</a> </li>
+<li><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/</a></li>
+</ul>
+<h4 id="4-propagating-changes-from-local-master-into-forked-master-on-github">4. Propagating changes from 'local master' into 'forked master' on GitHub.</h4>
+<p>If necessary, you can remind yourself about <strong>Git</strong> by having a look at the first two sections of <a href="https://nat3054-ws2627.onrender.com/git.html">https://nat3054-ws2627.onrender.com/git.html</a>.</p>
+<p>Do some change in your 'local master' where you are regularly developing your code. By default, modify locally ONLY your code, do NOT touch the code of other people!! After you have reviewed and validated your code in your working repository locally, copy only the modified classes into a temporary git repository (named "someDirectory" in step 2b/ above - remember, this one you do NOT compile, you just use it to propagate local changes to your online 'fork'):</p>
+<p>Simply do in the terminal:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>someDirectory/O2Physics<span class="w"> </span><span class="c1"># this is the top O2Physics directory</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>status<span class="w"> </span><span class="c1"># execute this command to get a summary of all classes which have been changed</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>git<span class="w"> </span>add<span class="w"> </span>someCode.cxx<span class="w"> </span><span class="c1"># indicate here which code you have modified (in the git vocabulary, you are staging your changes)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>git<span class="w"> </span>add<span class="w"> </span>someOtherCode.cxx<span class="w"> </span><span class="c1"># indicate here which code you have modified (in the git vocabulary, you are staging your changes)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"some nice commit message"</span><span class="w"> </span><span class="c1"># commit all that you have staged at the previous step. </span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>git<span class="w"> </span>push<span class="w"> </span>abilandz<span class="w"> </span><span class="c1"># finally, move your changes from 'local master' to 'forked master' on Grid (use your username here)</span>
+</span></code></pre></div>
+<p>After  this point, changes are on your own 'fork' on GitHub (check now the updated status of your fork on GitHub!), and they are not yet upstream in the central O2Physics repository on GitHub. This means they will not be included in the daily tag, unless you do not perform the next, and the final, step.</p>
+<p>When for the very first time you are adding a new class to the central O2 repository, you also need to add to your commit the modified specific "CMakeLists.txt file", remember from one of the previous tutorials the lines below...</p>
+<ul>
+<li>
+<p>copy class student-o2physics.cxx into subdir ~/scratch/aliceO2-1/O2Physics/PWGCF/MultiparticleCorrelations/Tasks</p>
+</li>
+<li>
+<p>in that subdir, there is a file "CMakeLists.txt" . Append the following lines end the end of that file:</p>
+</li>
+</ul>
+<div class="language-cmake highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">o2physics_add_dpl_workflow</span><span class="p">(</span><span class="s">student-o2physics</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">                    </span><span class="s">SOURCES</span><span class="w"> </span><span class="s">student-o2physics.cxx</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">                    </span><span class="s">PUBLIC_LINK_LIBRARIES</span><span class="w"> </span><span class="s">O2::Framework</span><span class="w"> </span><span class="s">O2Physics::AnalysisCore</span><span class="w"> </span><span class="s">O2Physics::PWGCFCore</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">                    </span><span class="s">COMPONENT_NAME</span><span class="w"> </span><span class="s">Analysis</span><span class="p">)</span>
+</span></code></pre></div>
+<p>By this point, think of a new name for your analysis task, i.e. you can rename "student-o2physics.cxx" into any other name you would prefer, and propagate that change in all other files. In case you have renamed your analysis task "student-o2physics.cxx" into some other file name, use that new name above in "CMakeLists.txt" as well.</p>
+<h4 id="5-propagating-changes-from-forked-master-on-github-into-central-master-on-github-aka-new-pull-request">5. Propagating changes from 'forked master' on GitHub into 'central master' on GitHub (a.k.a. 'New Pull Request')</h4>
+<ul>
+<li>
+<p>Simply go to your fork of O2Physics on GitHub, click 'Contribute', and then select 'Open Pull Request', and follow the tide.</p>
+</li>
+<li>
+<p>After all automated checks in the central repository related to your pull request are successful, and after somebody in charge (the official reviewer) approves your pull request (PR), your code is in the 'master' of the central O2 repository, and it will be included automatically in the next release tag. This procedure can take easily more than 1 day, so you need to be patient. If any of the automated checks failed, you have to fix your code locally immediately, make a new commit, and that commit will be automatically included in the same pull request. </p>
+</li>
+<li>
+<p>The final email you shall receive shall contain the message like this: <code>Merged #13241 into master</code>. This means that your change is now propagated in the 'central master' of O2Physics on GitHub.</p>
+</li>
+<li>
+<p>If your change was propagated before 16:00, it will be included in the daily analysis tag, and typically by 20:00 of the same day, it will be deployed all over the Grid (but delays can happen). After this point, you can also use your latest changes on Hyperloop! </p>
+</li>
+</ul>
+<p>Try to go by yourself ONLY through steps 1-4. Send me the link to your online 'fork' (give me also access permission, if necessary), which has a commit with all the changes you want to propagate to the central repository via pull request, but please DO NOT execute the pull request yet. I will review your changes and provide feedback. </p>
+<p>The very last step 5/ we will do together (only the first time).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
