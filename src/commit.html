@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-commit-the-local-code-to-central-o2-repository" class="md-skip">
+        <a href="#how-to-commit-the-local-code-to-the-central-o2-repository" class="md-skip">
           Skip to content
         </a>
       
@@ -511,7 +511,7 @@
   <a href="#1-setting-up-the-github-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Setting up the GitHub account.
+        1. Setting up the GitHub account
       
     </span>
   </a>
@@ -522,7 +522,7 @@
   <a href="#2-forking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Forking.
+        2. Forking
       
     </span>
   </a>
@@ -533,7 +533,7 @@
   <a href="#3-setting-up-a-passwordless-login-for-github-using-ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Setting up a passwordless login for GitHub using SSH.
+        3. Setting up a passwordless login for GitHub using SSH
       
     </span>
   </a>
@@ -544,7 +544,7 @@
   <a href="#4-propagating-changes-from-local-master-into-forked-master-on-github" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Propagating changes from 'local master' into 'forked master' on GitHub.
+        4. Propagating changes from 'local master' into 'forked master' on GitHub
       
     </span>
   </a>
@@ -718,7 +718,7 @@
   <a href="#1-setting-up-the-github-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Setting up the GitHub account.
+        1. Setting up the GitHub account
       
     </span>
   </a>
@@ -729,7 +729,7 @@
   <a href="#2-forking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Forking.
+        2. Forking
       
     </span>
   </a>
@@ -740,7 +740,7 @@
   <a href="#3-setting-up-a-passwordless-login-for-github-using-ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Setting up a passwordless login for GitHub using SSH.
+        3. Setting up a passwordless login for GitHub using SSH
       
     </span>
   </a>
@@ -751,7 +751,7 @@
   <a href="#4-propagating-changes-from-local-master-into-forked-master-on-github" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Propagating changes from 'local master' into 'forked master' on GitHub.
+        4. Propagating changes from 'local master' into 'forked master' on GitHub
       
     </span>
   </a>
@@ -786,114 +786,126 @@
 
 
 
-<h1 id="how-to-commit-the-local-code-to-central-o2-repository">How to commit the local code to central O2 repository?</h1>
-<p><strong>Last update</strong>: 20261022-1</p>
-<p>Here are the steps you need to follow to commit your code from the local O2Physics repository to the centrall O2Physics repository at <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics</a>.</p>
-<p>The main point is that once your code is in the central O2Physics repository, and then shortly afterward in one of the daily release tags, your code can be used to analyze large datasets online in Hyperloop. </p>
+<h1 id="how-to-commit-the-local-code-to-the-central-o2-repository">How to commit the local code to the central O2 repository?</h1>
+<p><strong>Last update</strong>: 20261025-1</p>
+<p>Here are the steps you need to follow to commit your code from the local O2Physics repository to the central O2Physics repository at <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics</a>.</p>
+<p>The main point is that once your code is in the central O2Physics repository, and shortly afterward in one of the daily release tags, your code can be used to analyze large datasets online in Hyperloop. </p>
 <p><strong>Disclaimer #1:</strong> Some of the steps below are needed only the very first time you commit your code. </p>
-<p><strong>Disclaimer #2:</strong> In addition, some steps below can be optimized and further improved using Git built-in functionalities, but I give you now the version which works, see later yourself if you want to optimize it further yourself.  </p>
-<h4 id="1-setting-up-the-github-account">1. Setting up the GitHub account.</h4>
-<p>First, in case you already do not have it, you need to create an account on <a href="https://github.com">GitHub</a> (ideally, by using the same username as you have at CERN, but that is not mandatory). </p>
-<p>After that, login in your GitHub account and authorize "ALICE Continuous Integration" to read your username so that it can be mapped to your CERN account (for more details, see the first two sections in <a href="https://alisw.github.io/git-tutorial/">https://alisw.github.io/git-tutorial/</a>.</p>
-<p>On your computer where you are developing the code in the O2Physics repository and where you can run 'git', adapt your credentials and then execute:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"&lt;Firstname&gt; &lt;Lastname&gt;"</span><span class="w"> </span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span>&lt;your-CERN-email-address&gt;<span class="w"> </span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.github<span class="w"> </span>&lt;your-GitHub-username&gt;
+<p><strong>Disclaimer #2:</strong> In addition, some steps below can be optimized and further improved using <strong>git</strong> built-in functionalities, but the current version works and it's a straightforward starting point.</p>
+<h4 id="1-setting-up-the-github-account">1. Setting up the GitHub account</h4>
+<p>First, if you already do not have one, you need to create a <a href="https://github.com">GitHub</a> account (ideally, using the same username you have at CERN, though that is not mandatory). </p>
+<p>After that, login into your GitHub account and authorize "ALICE Continuous Integration" to read your username so that it can be mapped to your CERN account (for more details, see the first two sections in <a href="https://alisw.github.io/git-tutorial/">https://alisw.github.io/git-tutorial/</a>.</p>
+<p>On your computer where you are developing the code in the local O2Physics repository and where you can use <strong>git</strong>, adapt your credentials below and then execute:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"First-name Last-name"</span><span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"your-CERN-email-address"</span><span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.github<span class="w"> </span><span class="s2">"your-GitHub-username"</span>
 </span></code></pre></div>
-<h4 id="2-forking">2. Forking.</h4>
-<p>In this step, you will learn how to clone the central O2Physics repository on GitHub into your own account on GitHub, a process called 'forking'. </p>
-<p>a) Go to the central O2Physics repository on GitHub by following this link <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics </a>;</p>
-<p>b) Click on the 'Fork' in the top-half-right corner (you can click only if you are already logged in GitHub, if not just click on the top on 'Sign in');</p>
-<p>c) If forking went OK, now you shall be automatically redirected to something like <a href="https://github.com/abilandz/O2Physics">https://github.com/abilandz/O2Physics</a> (adapt the username for your own account, same comments applies wherever below you see 'abilandz').
-This is your personal 'fork' for O2Physics repository, of central O2Physics repository at <a href="https://github.com/AliceO2Group/O2Physics"> https://github.com/AliceO2Group/O2Physics</a>.</p>
-<p>d) At the time you 'forked' the central repository, your own 'fork' is the 'master' version of <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics</a> at the time you did the fork. Few remarks:</p>
+<h4 id="2-forking">2. Forking</h4>
+<p>In this step, you will learn how to clone the central O2Physics repository on GitHub from this <a href="https://github.com/AliceO2Group/O2Physics">link</a> into your own account on GitHub &mdash; this process is called <em>forking</em>.</p>
+<p>a) Go to the central O2Physics repository on GitHub by following this <a href="https://github.com/AliceO2Group/O2Physics">link</a>;</p>
+<p>b) Click on the 'Fork' in the top-right menu (you can click only if you are already logged in GitHub with your account &mdash; if not just click on the top menu on 'Sign in');</p>
+<p>c) If forking went OK, now you shall be automatically redirected to your personal O2Physics repository on GitHub, something like <a href="https://github.com/abilandz/O2Physics">https://github.com/abilandz/O2Physics</a> (adapt the username in this path to your own account, same comments applies wherever below you see 'abilandz'). This is your personal 'fork' of the central O2Physics repository at this <a href="https://github.com/AliceO2Group/O2Physics">link</a>;</p>
+<p>d) At the time you 'forked' the central repository, your 'fork' is the 'master' branch version of the central O2Physics repository at that time. A few remarks:</p>
 <ul>
-<li>New changes in central 'master' are NOT automatically propagated into your own 'fork' &mdash;  this is summarized in your 'fork' with something like "<em>This branch is ... ahead and ... behind AliceO2Group/O2Physics:master</em>"</li>
-<li>The point of having 'fork' is the following: You can propagate changes from your local O2Physics repository directly into the online O2Physics repository, but only in your own 'fork' (certainly NOT in the central O2Physics repository). </li>
-<li>Only when you want to propagate those changes to the central repository <a href="https://github.com/AliceO2Group/O2Physics">https://github.com/AliceO2Group/O2Physics</a>, a lot of automated checks will be performed, and a person in charge needs to review and approve them </li>
-<li>In the browser, see if you want to bookmark your own 'fork', as you will be visiting this page frequently.</li>
-<li>If you have screwed-up your 'fork', or if your 'fork' is lagging too much behind the development in https://github.com/AliceO2Group/O2Physics , no worries, you can trivally always delete your 'fork', and make a new 'fork' again (or you can use built-in functionalities in <strong>Git</strong> to synchronize, investigate this further by yourself if interested &mdash; at least in the beginning, keep it simple and just delete your fork and fork it again). To delete a 'fork', just go to your 'fork' online, then click on 'Settings' (last item in the close-to-top horizontal menu), then scroll down to the 'Danger Zone' and opt for 'Delete this repository'. Then, simply go to Step 2a) again. </li>
-</ul>
-<p>To synchronize local 'master' version of O2Physics with the 'forked' master of O2Physics online in GitHub, the typical/standard workflow during code development is the following:</p>
-<ul>
-<li>Make some changes in your analysis task in the local 'master' =&gt; propagate those changes to 'forked master' online =&gt; propagate online changes from 'forked master' to the 'central master' by creating a pull request (needs several reviews and official approval)</li>
 <li>
-<p>How to establish the link between 'forked master' in GitHub, with the local 'master' (here I assume that you have checked out already on your desktop 'master' of O2Physics with the standard scripts I gave you &mdash; you do NOT need to recompile this 'master' version from scratch, you can use something like this in the shell function <strong>InstallationO2</strong>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">InstallationO2_TopLevelBuildDir</span><span class="o">=</span>someDirectory<span class="p">;</span><span class="w"> </span><span class="nv">InstallationO2_Compile</span><span class="o">=</span>false<span class="p">;</span><span class="w"> </span>InstallationO2<span class="w"> </span>master
-</span></code></pre></div>
+<p>New changes in 'master' branch in the central O2Physics repository are NOT automatically propagated into your own 'fork' &mdash;  this is summarized online in your 'fork' with something like "<em>This branch is ... ahead and ... behind AliceO2Group/O2Physics:master</em>";</p>
 </li>
 <li>
-<p>Go to the local git repository of your O2Physics 'master' (remember - you do NOT need to compile it from scratch, just check it out locally):</p>
+<p>The main point of having a 'fork' is the following: You can propagate changes from your local O2Physics repository directly into the online O2Physics repository, but only in your own 'fork' (certainly NOT directly into the central O2Physics repository); </p>
+</li>
+<li>
+<p>Only when you want to propagate those local changes to the central O2Physics repository, a lot of automated checks will be performed on your new code, and a person in charge needs to review and approve your changes;</p>
+</li>
+<li>
+<p>In the browser, see if you want to bookmark your own 'fork', as you will be visiting this page frequently;</p>
+</li>
+<li>
+<p>If you have screwed-up your 'fork', or if your 'fork' is lagging too much behind the development in the central O2Physics repository at this <a href="https://github.com/AliceO2Group/O2Physics">link</a>, no worries, you can trivally always delete your 'fork', and make a new 'fork' again (or you can use built-in functionalities in <strong>git</strong> to synchronize (investigate this further by yourself if interested, but beware of potential merging conflicts which can be frequently a nightmare to fix). At least in the beginning, keep it simple and just delete your 'fork' and 'fork' it again, because this doesn't take much time &mdash; it' less than 1 min. To delete a 'fork', just go to your online 'fork', then click on 'Settings' (last item in the close-to-top horizontal menu), then scroll down to the 'Danger Zone' and opt for 'Delete this repository'. Then, simply go to Step 2a) above again. </p>
+</li>
+</ul>
+<p>To synchronize the 'local master' version of O2Physics with the 'forked master' of O2Physics in your online account on GitHub, and in the next step to propagate those changes further to the 'central master', the typical/standard workflow during code development is the following:</p>
+<div align="center"> <!-- center the diagram below, do not forget to close it with </div> below -->
+
+<pre class="mermaid"><code>    flowchart TB
+    wf1["`make some changes in your O2Physics analysis code in the 'local master'`"]
+    wf2["`propagate those changes to the 'forked master' online in your personal GitHub account`"]
+    wf3["`propagate online changes from 'forked master' to the 'central master' by creating a **pull request (PR)**`"]
+    wf4["`your pull request is scrutinized and reviewed, both with automated checks (e.g. linters) and experts, before it's officially approved by experts and merged into the 'central master' of O2Physics`"]
+    wf5["`after your code is merged into the 'central master' of O2Physics, shortly afterward it will be inclued in a **daily analysis tag**, and once that daily tag is propagated on Grid, you can use your latest code in the Hyperloop`"]
+    wf1--&gt;wf2--&gt;wf3--&gt;wf4--&gt;wf5    </code></pre>
+
+</div>
+<p>How to establish the link between the 'forked master' online in GitHub, with the 'local master' (here I assume that you have checked out already on your local computer the 'master' branch of O2Physics, either directly, or e.g. with the shell function <strong>InstallationO2</strong>. To establish a link between 'local master' and online 'forked master', you do NOT need to recompile the 'local master' version from scratch &mdash; you can do something like this using the shell function <strong>InstallationO2</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">InstallationO2_TopLevelBuildDir</span><span class="o">=</span>someDirectory<span class="p">;</span><span class="w"> </span><span class="nv">InstallationO2_Compile</span><span class="o">=</span>false<span class="p">;</span><span class="w"> </span>InstallationO2<span class="w"> </span>master
+</span></code></pre></div>
+<p>This will checkout the 'central master' of O2Physics into local directory named 'someDirectory' (adapt further this directory and its name as necessary), but without compiling it.</p>
+<p>Go now to the git repository of your O2Physics 'local master' (remember - you do NOT need to compile it from scratch, just check it out locally):</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># use the same path as above:</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>someDirectory
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 'abilandz' here is my GitHub account name, replace with yours:</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>abilandz<span class="w"> </span>git@github.com:abilandz/O2Physics<span class="w"> </span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># In order to cross-check if your local 'master' is now in sync. </span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># with 'forked master' in GitHub, type:</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>git<span class="w"> </span>remote<span class="w"> </span>-v
 </span></code></pre></div>
-<p>The printout shall be like below (first two lines are your 'fork', and the last two lines are the central repository:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># if you have only the last two lines, the previous step has failed):</span>
+<p>In order to cross-check if your 'local master' is now in sync  with the 'forked master' in GitHub, proceed as follows::</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>-v
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>abilandz<span class="w"> </span>git@github.com:abilandz/O2Physics<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>abilandz<span class="w"> </span>git@github.com:abilandz/O2Physics<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>upstream<span class="w"> </span>https://github.com/AliceO2Group/O2Physics<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>upstream<span class="w"> </span>https://github.com/AliceO2Group/O2Physics<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
-</span></code></pre></div></p>
-</li>
-</ul>
-<h4 id="3-setting-up-a-passwordless-login-for-github-using-ssh">3. Setting up a passwordless login for GitHub using SSH.</h4>
-<p>You need to perform this step if you do not want to type your password again and again when connecting to GitHub from your terminal =&gt; basically, you need to follow these online instructions:</p>
+</span></code></pre></div>
+<p>In the above printout, the first two lines point to  your personal online 'fork', and the last two lines point to the central O2Physics repository. If you have only the last two lines in the above printout, the previous step has failed.</p>
+<h4 id="3-setting-up-a-passwordless-login-for-github-using-ssh">3. Setting up a passwordless login for GitHub using SSH</h4>
+<p>You need to perform this step if you do not want to type your password again and again when pushing local changes to GitHub from your terminal. To set up the password-less login to GitHub, follow these online instructions:</p>
 <ul>
 <li><a href="https://help.github.com/articles/checking-for-existing-ssh-keys/">https://help.github.com/articles/checking-for-existing-ssh-keys/</a> </li>
 <li><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</a> </li>
 <li><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/</a></li>
 </ul>
-<h4 id="4-propagating-changes-from-local-master-into-forked-master-on-github">4. Propagating changes from 'local master' into 'forked master' on GitHub.</h4>
-<p>If necessary, you can remind yourself about <strong>Git</strong> by having a look at the first two sections of <a href="https://nat3054-ws2627.onrender.com/git.html">https://nat3054-ws2627.onrender.com/git.html</a>.</p>
-<p>Do some change in your 'local master' where you are regularly developing your code. By default, modify locally ONLY your code, do NOT touch the code of other people!! After you have reviewed and validated your code in your working repository locally, copy only the modified classes into a temporary git repository (named "someDirectory" in step 2b/ above - remember, this one you do NOT compile, you just use it to propagate local changes to your online 'fork'):</p>
-<p>Simply do in the terminal:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>someDirectory/O2Physics<span class="w"> </span><span class="c1"># this is the top O2Physics directory</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>status<span class="w"> </span><span class="c1"># execute this command to get a summary of all classes which have been changed</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>git<span class="w"> </span>add<span class="w"> </span>someCode.cxx<span class="w"> </span><span class="c1"># indicate here which code you have modified (in the git vocabulary, you are staging your changes)</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>git<span class="w"> </span>add<span class="w"> </span>someOtherCode.cxx<span class="w"> </span><span class="c1"># indicate here which code you have modified (in the git vocabulary, you are staging your changes)</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"some nice commit message"</span><span class="w"> </span><span class="c1"># commit all that you have staged at the previous step. </span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>git<span class="w"> </span>push<span class="w"> </span>abilandz<span class="w"> </span><span class="c1"># finally, move your changes from 'local master' to 'forked master' on Grid (use your username here)</span>
+<h4 id="4-propagating-changes-from-local-master-into-forked-master-on-github">4. Propagating changes from 'local master' into 'forked master' on GitHub</h4>
+<p>If necessary, you can remind yourself about <strong>git</strong> by having a look at the first two sections of <a href="https://nat3054-ws2627.onrender.com/git.html">https://nat3054-ws2627.onrender.com/git.html</a>.</p>
+<p>Do some change in your local working O2Physics repository where you are regularly developing your code. By default, modify locally ONLY your code, do NOT touch the code of other people in the O2Physics repository! After you have reviewed and validated your code in your working repository locally (this is the O2Physics repository which you regularly compile and use to do analysis locally), copy only the modified classes into a temporary git repository (named "someDirectory" in the Step 2b) above &mdash; remember, this one you do NOT compile, you just use it to propagate local changes to your online 'fork'):</p>
+<p>After copying, simply do in the terminal (adapt "someDirectory" everywhere below to your case):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># go to O2Physics directory:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>someDirectory/O2Physics
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># execute this command to get a summary of all files which changed:</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>$<span class="w"> </span>git<span class="w"> </span>status<span class="w"> </span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>...<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>modified<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>corresponing<span class="w"> </span><span class="s1">'git'</span><span class="w"> </span>summary<span class="w"> </span>...
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># stage the modified files:</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>someCode.cxx
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>someOtherCode.cxx
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>...<span class="w"> </span>some<span class="w"> </span>more<span class="w"> </span>modified<span class="w"> </span>files<span class="w"> </span>...
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1"># commit all files that you have staged at the previous step: </span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"some commit message summarizing current modifications"</span><span class="w"> </span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># finally, push your changes from 'local master' to 'forked master'</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1"># on Grid (use your GitHub username below):</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>abilandz
 </span></code></pre></div>
-<p>After  this point, changes are on your own 'fork' on GitHub (check now the updated status of your fork on GitHub!), and they are not yet upstream in the central O2Physics repository on GitHub. This means they will not be included in the daily tag, unless you do not perform the next, and the final, step.</p>
-<p>When for the very first time you are adding a new class to the central O2 repository, you also need to add to your commit the modified specific "CMakeLists.txt file", remember from one of the previous tutorials the lines below...</p>
+<p>After this step, changes are on your own 'forked master' on GitHub (check now with the browser the updated status of your 'fork' on GitHub!), and they are not yet upstream in the 'central master'' O2Physics repository on GitHub. This means they will not be included in the daily analysis tag, unless you do not perform the next and the final step, which is outlined in the next section.</p>
+<p>Only when for the very first time you are adding a new code to the central O2Physics repository, you also need to include in that commit the modified specific "CMakeLists.txt" file, i.e. you have to tell <strong>cmake</strong> that your newly included file in O2Physics repository also needs to be compiled. </p>
+<p>Recall from one of the previous tutorials the line below:</p>
 <ul>
-<li>
-<p>copy class student-o2physics.cxx into subdir ~/scratch/aliceO2-1/O2Physics/PWGCF/MultiparticleCorrelations/Tasks</p>
-</li>
-<li>
-<p>in that subdir, there is a file "CMakeLists.txt" . Append the following lines end the end of that file:</p>
-</li>
+<li>copy the class "student-o2physics.cxx" into subdir <code>path-to-your-local-working-repository/O2Physics/PWGCF/MultiparticleCorrelations/Tasks</code></li>
 </ul>
+<p>In the subdirectory of 'local master' <code>someDirectory/O2Physics/PWGCF/MultiparticleCorrelations/Tasks</code> there is a file "CMakeLists.txt" . Append the following lines end the end of that file:</p>
 <div class="language-cmake highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">o2physics_add_dpl_workflow</span><span class="p">(</span><span class="s">student-o2physics</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">                    </span><span class="s">SOURCES</span><span class="w"> </span><span class="s">student-o2physics.cxx</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">                    </span><span class="s">PUBLIC_LINK_LIBRARIES</span><span class="w"> </span><span class="s">O2::Framework</span><span class="w"> </span><span class="s">O2Physics::AnalysisCore</span><span class="w"> </span><span class="s">O2Physics::PWGCFCore</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">                    </span><span class="s">COMPONENT_NAME</span><span class="w"> </span><span class="s">Analysis</span><span class="p">)</span>
 </span></code></pre></div>
-<p>By this point, think of a new name for your analysis task, i.e. you can rename "student-o2physics.cxx" into any other name you would prefer, and propagate that change in all other files. In case you have renamed your analysis task "student-o2physics.cxx" into some other file name, use that new name above in "CMakeLists.txt" as well.</p>
+<p>By this point, think of a new name for your analysis task, i.e. you can rename "student-o2physics.cxx" into any other name you would prefer, and propagate that change in all other files. In case you have renamed your analysis task "student-o2physics.cxx" into some other file name, use that new name above in "CMakeLists.txt" as well. You have to modify and commit the modified "CMakeLists.txt" file only once, the first time you are adding your new code to the O2Physics repository. </p>
 <h4 id="5-propagating-changes-from-forked-master-on-github-into-central-master-on-github-aka-new-pull-request">5. Propagating changes from 'forked master' on GitHub into 'central master' on GitHub (a.k.a. 'New Pull Request')</h4>
-<ul>
-<li>
-<p>Simply go to your fork of O2Physics on GitHub, click 'Contribute', and then select 'Open Pull Request', and follow the tide.</p>
-</li>
-<li>
-<p>After all automated checks in the central repository related to your pull request are successful, and after somebody in charge (the official reviewer) approves your pull request (PR), your code is in the 'master' of the central O2 repository, and it will be included automatically in the next release tag. This procedure can take easily more than 1 day, so you need to be patient. If any of the automated checks failed, you have to fix your code locally immediately, make a new commit, and that commit will be automatically included in the same pull request. </p>
-</li>
-<li>
-<p>The final email you shall receive shall contain the message like this: <code>Merged #13241 into master</code>. This means that your change is now propagated in the 'central master' of O2Physics on GitHub.</p>
-</li>
-<li>
-<p>If your change was propagated before 16:00, it will be included in the daily analysis tag, and typically by 20:00 of the same day, it will be deployed all over the Grid (but delays can happen). After this point, you can also use your latest changes on Hyperloop! </p>
-</li>
-</ul>
-<p>Try to go by yourself ONLY through steps 1-4. Send me the link to your online 'fork' (give me also access permission, if necessary), which has a commit with all the changes you want to propagate to the central repository via pull request, but please DO NOT execute the pull request yet. I will review your changes and provide feedback. </p>
-<p>The very last step 5/ we will do together (only the first time).</p>
+<p>To propagate your new code from 'forked master' into 'central master', simply go to your online 'fork' of O2Physics in GitHub, click 'Contribute', and then select 'Open Pull Request', and follow the tide.</p>
+<p>After all automated checks in the 'central master' repository related to your pull request are successful, and after somebody in charge (the official reviewer) approves your pull request (PR), your code will be merged into the 'central master' of thel O2Physics repository, and it will be included automatically in the next daily analysis tag. This procedure can take easily more than 1 day, so you need to be patient. If any of the automated checks failed, you have to fix your code locally immediately, make and push a new commit, and that commit will be automatically included in the same pull request. </p>
+<p>In the end, the final email you shall receive shall contain the message like this: </p>
+<p><code>Merged #13241 into master</code></p>
+<p>where 13241 is an example number of your pull request. This means that your new code is now officially included in the 'central master' of O2Physics on GitHub.</p>
+<p>If your new code was included before 16:00, it will be included in the next daily analysis tag, and typically by 20:00 of the same day, it will be deployed on all worker nodes on Grid. <span style="color: red;">TBI 20261025 cross-check if these time constraints still apply</span></p>
+<p>Finally, after this point, you can also use your latest code on Hyperloop. </p>
+<!-- closing the figure-centering env. opened above -->
 
 
 
