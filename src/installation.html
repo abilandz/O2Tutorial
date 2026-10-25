@@ -319,6 +319,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2: Installation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="installation.html" class="md-nav__link md-nav__link--active">
         
   
@@ -335,6 +353,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequirements-alibuild" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prerequirements: aliBuild
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-installation-via-shells-utility-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Installation via shell's utility functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-elementary-out-of-box-tutorial-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The elementary out-of-box tutorial example
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -618,6 +688,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequirements-alibuild" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prerequirements: aliBuild
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-installation-via-shells-utility-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Installation via shell's utility functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-elementary-out-of-box-tutorial-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The elementary out-of-box tutorial example
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -636,42 +747,159 @@
 <h1 id="local-installation">Local installation</h1>
 <p><strong>Last update</strong>: 20261025-1</p>
 <p>To install locally the O2 analysis software, the <strong>Bash</strong> shell utility function <strong>InstallationO2</strong> can be used. That function is implemented, alongside other O2 utility functions in this personalized <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, and the latest version of the code can be obtained directly by following this direct link <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/scripts/O2.sh">O2.sh</a>. </p>
+<h4 id="1-prerequirements-alibuild">1. Prerequirements: aliBuild</h4>
+<p>The utility function <strong>InstallationO2</strong> is basically a down-to-earth wrapper for <strong>aliBuild</strong>, the highly-sophisticated Python script which is doing the actual O2 compilation. Therefore, one first has to ensure that <strong>aliBuild</strong> is installed, by using:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>alibuild
+</span></code></pre></div>
+Later, <strong>aliBuild</strong> can be upgraded to a newer version with:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>alibuild<span class="w"> </span>--upgrade
+</span></code></pre></div>
+All the steps from this tutorial were last time succesfully performed on Linux Ubuntu 22.04, using <strong>aliBuild</strong> version 1.17.48:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>aliBuild<span class="w"> </span>version
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aliBuild<span class="w"> </span>version:<span class="w"> </span><span class="m">1</span>.17.48<span class="w"> </span><span class="o">(</span>ubuntu2204_x86-64<span class="o">)</span>
+</span></code></pre></div></p>
+<h4 id="2-installation-via-shells-utility-functions">2. Installation via shell's utility functions</h4>
 <p>To use install locally O2, follow these steps:</p>
-<ul>
-<li>copy locally and source the file "O2.sh" </li>
-</ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>O2.sh
+<ol>
+<li>
+<p>copy locally and source the file "O2.sh" </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>O2.sh
 </span></code></pre></div>
 <p>After this step, shell utility functions <strong>InstallationO2</strong>, <strong>MenuO2</strong>, etc., are in a computer's memory, and can be used like any other Linux or shell command.</p>
+</li>
+<li>
+<p>print the example use cases of <strong>InstallationO2</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>InstallationO2<span class="w"> </span>-h
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Example<span class="w"> </span>use<span class="w"> </span>cases:
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w"> </span><span class="c1"># Example 1: InstallationO2 master # compiles package O2Physics@master in default top level build directory</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w"> </span><span class="c1"># Example 2: InstallationO2 nightly-20220630 # compiles package O2Physics@nightly-20220630 in default top level build directory</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w"> </span><span class="c1"># Example 3: InstallationO2_TopLevelBuildDir=$HOME/scratch/aliceO2-1; InstallationO2 master </span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">              </span><span class="c1"># Compiles package O2Physics@master in user specified top level build directory,</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">              </span><span class="c1"># using default value hardwired for each machine for number of jobs (e.g. 16 for 'anteb', 8 for 'napalm', 12 for 'nx*' etc.) </span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w"> </span><span class="c1"># Example 4: InstallationO2_TopLevelBuildDir=$HOME/scratch/aliceO2-1; InstallationO2_nJobs=12; InstallationO2 master </span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">              </span><span class="c1"># Compiles package O2Physics@master in user specified top level build directory, using 12 nJobs as an argument to -j flag of aliBuild. </span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w"> </span><span class="c1"># Example 5: InstallationO2_TopLevelBuildDir=$HOME/scratch/aliceO2-1; InstallationO2_Compile=false; InstallationO2 master </span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">              </span><span class="c1"># Only checks out package O2Physics@master in user specified top level build directory, i.e. compilation is NOT performed</span>
+</span></code></pre></div>
+<p>As the above examples illustrate, the shell function <strong>InstallationO2</strong> configures itself from pre-defined variables. The default values of variables are hardcoded in its source code, and those internal default settings can be overwritten by defining in the current shell environment the following variables:</p>
 <ul>
-<li>print the example use cases of <strong>InstallationO2</strong></li>
+<li><strong>InstallationO2_TopLevelBuildDir</strong> &mdash; this is a top-level directory on a local computer into which the whole O2 software will be compiled;</li>
+<li><strong>InstallationO2_nJobs</strong> &mdash; the total number of CPU cores which will be used during compilation. One can use more CPUs to speed up compilation, but that will cause more stress on the system due to larger memory consumption. We would suggest to start with 4 CPUs, and if the compilation fails due to large memory consumption, simply restart compilation, but with smaller number of CPUs (see further tips below);</li>
+<li><strong>InstallationO2_Compile</strong> &mdash; if you set this varible to <code>false</code>, the O2 source code will only be copied locally, but the compilation won't start. </li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>InstallationO2<span class="w"> </span>-h
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Example<span class="w"> </span>use<span class="w"> </span>cases:
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w"> </span><span class="c1"># Example 1: InstallationO2 master # compiles package O2Physics@master in default top level build directory</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w"> </span><span class="c1"># Example 2: InstallationO2 nightly-20220630 # compiles package O2Physics@nightly-20220630 in default top level build directory</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w"> </span><span class="c1"># Example 3: InstallationO2_TopLevelBuildDir=$HOME/scratch/aliceO2-1; InstallationO2 master </span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">              </span><span class="c1"># Compiles package O2Physics@master in user specified top level build directory,</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">              </span><span class="c1"># using default value hardwired for each machine for number of jobs (e.g. 16 for 'anteb', 8 for 'napalm', 12 for 'nx*' etc.) </span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w"> </span><span class="c1"># Example 4: InstallationO2_TopLevelBuildDir=$HOME/scratch/aliceO2-1; InstallationO2_nJobs=12; InstallationO2 master </span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">              </span><span class="c1"># Compiles package O2Physics@master in user specified top level build directory, using 12 nJobs as an argument to -j flag of aliBuild. </span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w"> </span><span class="c1"># Example 5: InstallationO2_TopLevelBuildDir=$HOME/scratch/aliceO2-1; InstallationO2_Compile=false; InstallationO2 master </span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">              </span><span class="c1"># Only checks out package O2Physics@master in user specified top level build directory, i.e. compilation is NOT performed</span>
+<p>Besides that, the function <strong>InstallationO2</strong> can take one argument, which determines the version of O2 software which one wants to install locally. As a rule of thumb, that shall be the "master" branch. </p>
+</li>
+<li>
+<p>In case you want to compile the "master" version of O2 in a local directory <code>$HOME/aliceO2-1/</code> (or adapt to any other path), using 4 CPUs, simply execute in the terminal:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span><span class="nv">InstallationO2_TopLevelBuildDir</span><span class="o">=</span><span class="nv">$HOME</span>/aliceO2-1
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$<span class="w"> </span><span class="nv">InstallationO2_nJobs</span><span class="o">=</span><span class="m">4</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>$<span class="w"> </span>InstallationO2<span class="w"> </span>master<span class="w"> </span>
 </span></code></pre></div>
-<p>a) Initialize locally the O2 environment using shell function <strong>MenuO2</strong></p>
-<p>1/ We ported two functions to your account, <strong>InstallationO2</strong> and <strong>MenuO2</strong>, and started from scratch your first local O2 compilation on /scratch disk area. Once the compilation finishes, please try to open a new terminal on 'nidoqueen', or a new window in the existing screen session (in both cases you get a new shell instance with a clean environment!), and use the <strong>MenuO2</strong> function to enable the O2 environment in that new and clean shell. If <strong>MenuO2</strong> succeeded, remember that you still have to type </p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>bash
+    or instead and equivalently a one-liner:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span><span class="nv">InstallationO2_TopLevelBuildDir</span><span class="o">=</span><span class="nv">$HOME</span>/aliceO2-1<span class="p">;</span><span class="w"> </span><span class="nv">InstallationO2_nJobs</span><span class="o">=</span><span class="m">4</span><span class="p">;</span><span class="w"> </span>InstallationO2<span class="w"> </span>master<span class="w"> </span>
 </span></code></pre></div>
-<p>in the terminal, to finalize environment initialization.</p>
-<p>2/ Remember to keep in sync all default values for relevant variables (e.g. top-level directory for O2 compilation) in both InstallationO2 and MenuO2.</p>
-<p>3/ There is another presentation from the latest O2 tutorial in November 2025: https://indico.cern.ch/event/1574136/timetable/ you can consult now (in case you do not have access, I have uploaded this 2nd presentation by David at the same public link ). Please have a look at the first 10 slides, and try to execute the tutorial executable (which shall be ready to use in your environment if compilation went through, and O2 environment is correctly initialized e.g. with MenuO2 function) to:
- a) process one example AOD2.root file. It's explained on the slides from David how to download it from his Dropbox - if his link expired, please try to process this local file: 
-        /scratch3/abilandz/O2/Datasets/Run_3/2023/LHC23zzh/544122/apass3/0440/o2_ctf_run00544122_orbit0160006240_tf0000749850_epn059/003/AO2D.root
- b) as an output of this processing, try to produce a ROOT file automatically, holding a histogram with example eta distribution. Please send me that eta distribution by email! </p>
+    For any subsequent installation from scratch of O2, one can simply increase the "build counter" in the directory name "aliceO2-1".</p>
+</li>
+<li>
+<p>In case the O2 compilation failed due to large memory consumption, in the very same terminal you can try to restart the compilation with smaller number of CPUs. Using the above settings, you can restart the failed compilation in the same terminal manually with:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># navigate to the top-level build directory:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/aliceO2-1
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># restart manually compilation with smaller number of CPUs:</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>$<span class="w"> </span>aliBuild<span class="w"> </span>build<span class="w"> </span>O2Physics<span class="w"> </span>-j<span class="w"> </span><span class="m">3</span><span class="w"> </span>--defaults<span class="w"> </span>o2<span class="w"> </span>--debug<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>build.log
+</span></code></pre></div>
+    The option <code>-j</code> takes number of CPUs as its argument. The Linux command <strong>tee</strong> is used to redirect all printed information during compilation to the monitor, and in parallel to the file "build.log". If the above compilation fails as well due to large memory compilation, the compilation can be restarted again with even less CPUs. </p>
+</li>
+<li>
+<p>In case the O2 compilation succeded, you shall get a message like this in the terminal: </p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Build<span class="w"> </span>of<span class="w"> </span>O2Physics<span class="w"> </span>successfully<span class="w"> </span>completed<span class="w"> </span>on<span class="w"> </span><span class="sb">`</span>napalm<span class="err">'</span>.
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Your<span class="w"> </span>software<span class="w"> </span>installation<span class="w"> </span>is<span class="w"> </span>at:
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>/home/abilandz/aliceO2-1/sw/ubuntu2204_x86-64
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>You<span class="w"> </span>can<span class="w"> </span>use<span class="w"> </span>this<span class="w"> </span>package<span class="w"> </span>by<span class="w"> </span>loading<span class="w"> </span>the<span class="w"> </span>environment:
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>alienv<span class="w"> </span>enter<span class="w"> </span>O2Physics/latest-master-o2
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>Build<span class="w"> </span>directory<span class="w"> </span><span class="k">for</span><span class="w"> </span>devel<span class="w"> </span>package<span class="w"> </span>O2:
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>/home/abilandz/aliceO2-1/sw/BUILD/O2-latest-master/O2
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>Build<span class="w"> </span>directory<span class="w"> </span><span class="k">for</span><span class="w"> </span>devel<span class="w"> </span>package<span class="w"> </span>O2Physics:
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>/home/abilandz/aliceO2-1/sw/BUILD/O2Physics-latest-master/O2Physics
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="m">2026</span>-07-02@11:34:21:DEBUG:O2Physics:O2Physics:master:<span class="w"> </span>Everything<span class="w"> </span><span class="k">done</span>
+</span></code></pre></div>
+To faciliate the procedure, to load and enable the environment from scratch for this O2 build in another terminal, the utility function <strong>MenuO2</strong> is provided (it's implemented in the same file, namely  <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/scripts/O2.sh">O2.sh</a>, as <strong>InstallationO2</strong>). This shell function <strong>MenuO2</strong> is just a wrapper for <strong>alien enter ...</strong> command above. </p>
+</li>
+<li>
+<p>Open a new terminal, and initialize locally the O2 environment for its build in <code>${HOME}/aliceO2-1</code>, using shell function <strong>MenuO2</strong>:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># source the implementation of MenuO2:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>O2.sh
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Tell MenuO2 for which O2 build you want to initialize env.:</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>$<span class="w"> </span><span class="nv">MenuO2_TopLevelBuildDir</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/aliceO2-1
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Finally, execute MenuO2:</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>$<span class="w"> </span>MenuO2
+</span></code></pre></div>
+    You will be prompted with a small menu, e.g. choose "master" version of O2 built in <code>${HOME}/aliceO2-1</code> </p>
+<p>After that, the function <strong>MenuO2</strong> will initialize the environment for this O2 built. You still have to execute:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>bash
+</span></code></pre></div>
+to start a new shell instance, where only global variables are inherited and shell configuration files are sourced from scratch. This is an important step, and shall not be overlooked.</p>
+</li>
+</ol>
+<p>After this final step, you have the working O2 installation in your current terminal, and can proceed with the next quick check.</p>
+<h4 id="3-the-elementary-out-of-box-tutorial-example">3. The elementary out-of-box tutorial example</h4>
+<p>Process one example "AO2D.root" file with your current O2 installation, using the tutorial executable <strong>o2-analysistutorial-mm-my-example-task</strong>. As an example, we will process with that executable one example "AO2D.root" from Pb&ndash;Pb collisions in 2023, from the latest available reconstruction pass (apass5). You can download one such file directly from AliEn catalogue into your current working directory, by using:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$<span class="w"> </span>alien.py<span class="w"> </span>cp<span class="w"> </span>/alice/data/2023/LHC23zzh/544122/apass5/0440/o2_ctf_run00544122_orbit0157342304_tf0000666602_epn334/001/AO2D.root<span class="w"> </span>file:.
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>jobID:<span class="w"> </span><span class="m">1</span>/1<span class="w"> </span>&gt;&gt;&gt;<span class="w"> </span>Start
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>jobID:<span class="w"> </span><span class="m">1</span>/1<span class="w"> </span>&gt;&gt;&gt;<span class="w"> </span>STATUS<span class="w"> </span>OK<span class="w"> </span>&gt;&gt;&gt;<span class="w"> </span>SPEED<span class="w"> </span><span class="m">108</span>.14<span class="w"> </span>MiB/s
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Successful<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span><span class="o">(</span>1st<span class="w"> </span>try<span class="o">)</span>:<span class="w"> </span><span class="m">1</span>/1
+</span></code></pre></div>
+<p>With the command <strong>alien.py cp</strong>, the example "AO2D.root" file of 2023 data-taking period LHC23zzh, from run number 544122 and the 5th reconstruction pass, is copied into current working directory (in case you want to copy that file from AliEn catalogue directly to some other location locally, simply adapt the last argument <code>file:.</code> with <code>file:someOtherDir</code>).</p>
+<p>After you have copied the example file "AO2D.root" from AliEn catalogue locally, execute:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>o2-analysistutorial-mm-my-example-task<span class="w"> </span>--aod-file<span class="w"> </span>AO2D-data.root
+</span></code></pre></div></p>
+<p>The above line assumes that the file "AO2D.root" is in your current working directory &mdash; if it's not, adapt above either its relative or absolute path.</p>
+<p>You shall see on the screen something like:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>o2-analysistutorial-mm-my-example-task<span class="w"> </span>--aod-file<span class="w"> </span>AO2D.root<span class="w"> </span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Loading<span class="w"> </span>metadata<span class="w"> </span>from<span class="w"> </span>file<span class="w"> </span>AO2D.root<span class="w"> </span><span class="k">in</span><span class="w"> </span>PID<span class="w"> </span><span class="m">425933</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Metadata<span class="w"> </span><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="s2">"AO2D.root"</span>:
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>O2Version:<span class="w"> </span><span class="m">1</span>.2.0
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>LPMProductionTag:<span class="w"> </span>LHC23zzh
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>ROOTVersion:<span class="w"> </span><span class="m">6</span>.32.06
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>RecoPassName:<span class="w"> </span>apass5
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>Run:<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>AnchorPassName:<span class="w"> </span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>DataType:<span class="w"> </span>RAW
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>-<span class="w"> </span>AnchorProduction:<span class="w"> </span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Initialising<span class="w"> </span>O2<span class="w"> </span>Data<span class="w"> </span>Processing<span class="w"> </span>Layer.<span class="w"> </span>Driver<span class="w"> </span>PID:<span class="w"> </span><span class="m">425933</span>.
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Driver<span class="w"> </span>listening<span class="w"> </span>on<span class="w"> </span>port:<span class="w"> </span><span class="m">14013</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>...<span class="w"> </span>many<span class="w"> </span>more<span class="w"> </span>lines<span class="w"> </span>not<span class="w"> </span>shown<span class="w"> </span>here<span class="w"> </span>...
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="o">[</span><span class="m">425966</span>:internal-dpl-clock<span class="o">]</span>:<span class="w"> </span><span class="o">[</span><span class="m">13</span>:33:08<span class="o">][</span>STATE<span class="o">]</span><span class="w"> </span>Exiting<span class="w"> </span>FairMQ<span class="w"> </span>state<span class="w"> </span>machine
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="c1">## Processes completed. Run summary:</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="c1">### Devices started: 6</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w">  </span>-<span class="w"> </span>Device<span class="w"> </span>internal-dpl-clock:<span class="w"> </span>pid<span class="w"> </span><span class="m">425966</span><span class="w"> </span><span class="o">(</span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w">  </span>-<span class="w"> </span>Device<span class="w"> </span>internal-dpl-aod-reader:<span class="w"> </span>pid<span class="w"> </span><span class="m">425967</span><span class="w"> </span><span class="o">(</span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w">  </span>-<span class="w"> </span>Device<span class="w"> </span>internal-dpl-aod-spawner:<span class="w"> </span>pid<span class="w"> </span><span class="m">425968</span><span class="w"> </span><span class="o">(</span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w">  </span>-<span class="w"> </span>Device<span class="w"> </span>my-example-task:<span class="w"> </span>pid<span class="w"> </span><span class="m">425969</span><span class="w"> </span><span class="o">(</span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w">  </span>-<span class="w"> </span>Device<span class="w"> </span>internal-dpl-aod-global-analysis-file-sink:<span class="w"> </span>pid<span class="w"> </span><span class="m">425970</span><span class="w"> </span><span class="o">(</span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w">  </span>-<span class="w"> </span>Device<span class="w"> </span>internal-dpl-injected-dummy-sink:<span class="w"> </span>pid<span class="w"> </span><span class="m">425971</span><span class="w"> </span><span class="o">(</span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="o">)</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="c1">## Analysis Run Summary ##</span>
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="c1">### Files read stats ###</span>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="nv">lfn</span><span class="o">=</span>AO2D.root,size<span class="o">=</span><span class="m">4007126220</span>,total_df<span class="o">=</span><span class="m">83</span>,read_bytes<span class="o">=</span><span class="m">942195916</span>,read_calls<span class="o">=</span><span class="m">420</span>,io_time<span class="o">=</span><span class="m">2</span>.6,wait_time<span class="o">=</span><span class="m">0</span>.8,level<span class="o">=</span><span class="m">0</span>,read_df<span class="o">=</span><span class="m">83</span>,skipped_df<span class="o">=</span><span class="m">0</span>
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="c1">### Files opened stats ###</span>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Last<span class="w"> </span>file<span class="w"> </span>opened:<span class="w"> </span><span class="nv">lfn</span><span class="o">=</span>AO2D.root,size<span class="o">=</span><span class="m">4007126220</span>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Dumping<span class="w"> </span>used<span class="w"> </span>configuration<span class="w"> </span><span class="k">in</span><span class="w"> </span>dpl-config.json
+</span></code></pre></div></p>
+<p>As an output of this processing, you shall get the output analysis file named "AnalysisResults.root", holding a histogram with example eta distribution, produced by the executable <strong>o2-analysistutorial-mm-my-example-task</strong>, as the following screenshot demonstrates.</p>
+<p><img src="../Figures/tutorial_etaDistribution.png" alt="" width="700" style="display: block; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom: auto;"/></p>
+<!-- TBI 20261025: Since in this repo I support only about MkDocs "material", I used above the specific relative path ../Figures . See NAT3054 repository, if I want to generalize  -->
 
 
 
