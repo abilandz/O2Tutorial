@@ -1,0 +1,50 @@
+{
+    "internal-dpl-clock": "",
+    "internal-dpl-aod-reader": {
+        "aod-max-io-rate": "0",
+        "time-limit": "0",
+        "orbit-offset-enumeration": "0",
+        "orbit-multiplier-enumeration": "0",
+        "start-value-enumeration": "0",
+        "end-value-enumeration": "-1",
+        "step-value-enumeration": "1",
+        "aod-file-private": "/scratch3/abilandz/O2/Datasets/Run_3/2023/LHC23zzh/544122/apass3/0440/o2_ctf_run00544122_orbit0160006240_tf0000749850_epn059/003/AO2D.root",
+        "__aod-file-private": "/scratch3/abilandz/O2/Datasets/Run_3/2024/LHC24g3/0/544122/AOD/001/AO2D.root"
+    },
+    "eventselection-run3": {
+        "evselOpts": {
+            "isMC": "false"
+        },
+        "ccdburl": "http:\/\/alice-ccdb.cern.ch"
+    },
+    "propagation-service": {
+        "processRealData": "true",
+        "processMonteCarlo": "false",
+        "processRealDataWithPID": "false",
+        "processMonteCarloWithPID": "false"
+    },
+    "mult-cent-table": {
+        "processMonteCarlo": "false",
+        "processMonteCarlo2Mults": "false"
+    },
+    "tracks-extra-v002-converter": {
+        "processV000ToV002": "false",
+        "processV001ToV002": "true"
+    },
+    "student-o2-physics": {
+        "__ process switches __" : "this is a comment",
+        "processRec": "true",
+        "processRecSim": "false",
+        "processSim": "false",
+
+        "__ configure your task __" : "this is a comment",
+         "cfDryRun": "false",
+
+        "__ binning __ " : "this is a comment",
+        "cf_pt_bins":   {"values": ["200", "0.", "10."]}
+
+    },
+    "internal-dpl-aod-writer": "",
+    "internal-dpl-injected-dummy-sink": "",
+    "internal-dpl-aod-global-analysis-file-sink": ""
+}

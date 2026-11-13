@@ -1,0 +1,1029 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="installation.html">
+      
+      
+        <link rel="next" href="ccdb.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../Figures/o2logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3: Task skeleton - O2 tutorial (stripped-down and personalized version)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/material/bootstrap-like-tables.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#example-task-json-config-and-workflow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="O2 tutorial (stripped-down and personalized version)" class="md-header__button md-logo" aria-label="O2 tutorial (stripped-down and personalized version)" data-md-component="logo">
+      
+  <img src="../Figures/o2logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            O2 tutorial (stripped-down and personalized version)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3: Task skeleton
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="O2 tutorial (stripped-down and personalized version)" class="md-nav__button md-logo" aria-label="O2 tutorial (stripped-down and personalized version)" data-md-component="logo">
+      
+  <img src="../Figures/o2logo.png" alt="logo">
+
+    </a>
+    O2 tutorial (stripped-down and personalized version)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="start.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1: Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2: Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3: Task skeleton
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="skeleton.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3: Task skeleton
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-analysis-task-skeleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Analysis task skeleton
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-json-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. JSON configuration file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cuts.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4: Adding cuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ccdb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5: Access to CCDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="linters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6: O2 coding style and rules, O2linter, etc.
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="commit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7: How to commit the local code to central O2 repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenges
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Challenges
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Challenges/Challenge_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenge 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Challenges/Challenge_2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Challenge 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-analysis-task-skeleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Analysis task skeleton
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-json-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. JSON configuration file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="example-task-json-config-and-workflow">Example task, JSON config and workflow</h1>
+<p><strong>Last update</strong>: 20261113-1</p>
+<p>In this part of O2 tutorial, the example skeleton analysis task is introduced, alongside its JSON configuration file (<em>config</em> for short), and the workflow in which it can be used. This example is sufficient to process the O2 AO2D.root files locally, which were obtained both from real reconstructed data, and from reconstructed simulated Monte Carlo productions. In the latter case, reconstructed and simulated information can be processed separately.</p>
+<p>This part of tutorial offers a starting working template for the analsyis in O2, on top of which later you can further develop your own analysis taks, workflow, etc., by adding more functionalities and features.</p>
+<p>The provided example task, JSON config and workflow were tested for:</p>
+<ul>
+<li>O2Physics "master" dated Mon Oct 19 2026, and compiled locally;</li>
+<li>real reconstructed data "AO2D.root" files from the latest apass5 reconstruction of LHC23zzh dataset (Pb-Pb collisions from 2023 run);</li>
+<li>simulated reconstructed data "AO2D.root" files from Monte Carlo production LHC25f3_gp which was <em>anchored</em> on the above real dataset (i.e. it was simulated using the same detector conditions &mdash; this connection between real data and Monte Carlo is mandatory to obtain reliable efficiency corrections).</li>
+</ul>
+<p>If this tutorial is executed successfully, the example analysis task will produced an output file of analysis named "AnalysisResults.root", where all histograms and other objects booked in this example task are automatically saved. </p>
+<h4 id="1-analysis-task-skeleton">1. Analysis task skeleton</h4>
+<p>The latest version of the analysis task skeleton code is available in the file named "student-o2physics.cxx" and can be obtained directly from the personalized <a href="https://github.com/abilandz/O2Tutorial">O2Tutorial</a> repository, by following this direct <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/cpp/student-o2physics.cxx">link</a>. The analysis task is designed and organized schematically as:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Preamble</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">## Licencing information</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">## Include headers</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">## Namespaces</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">## Joint tables</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">## Enums</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># The main task</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1">## Task definition</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">## Definition of base TList to hold all output objects</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1">## Configurables</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1">## Data members</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">## Local member functions</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1">## mandatory function init() </span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1">## mandatory process functions and related process switches</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># The final technical details</span>
+</span></code></pre></div>
+<p>In the above analysis structure, we highlight the following:</p>
+<ol>
+<li>mandatory <strong>function init()</strong> &mdash; before data processing starts, the framework will call automatically this function. Whatever is implemented in that function, will be executed automatically (typically, one books all analysis objects in this function). The framework does not care about the details of internal implementation of <strong>function init()</strong>, it only requests that such function exists, and that function will be called;</li>
+<li>mandatory process functions and related process switches &mdash; one can implement one or more <em>process</em> functions and corresponding process switches. Settings of process switches determines which process function will be executed during data processing. Framework automatically calls a specified process function for each collision which is processed, and whatever is implemented in that process function, will be executed for that collision, during data processing;</li>
+<li>histograms are filled and saved in the output file "AnalysisResults.root", and it is illustrated with nesting of TLists how the structure of that output file can be organized to resemble directory/subdirectory hierarchy. </li>
+</ol>
+<p>To be able to use the above example analysis task "student-o2physics.cxx", one needs to include that task in the O2Physics code base, and then re-compile. For that, the following steps need to be followed:</p>
+<ol>
+<li>
+<p>adapt all file paths below whenever necessary, e.g. in 2.) you need to replace <code>~/scratch/aliceO2-1</code> with what corresponds to your local build directory of O2 (this step you accomplished in TBI 20261026 add link to the section);</p>
+</li>
+<li>
+<p>copy the class "student-o2physics.cxx" (fetch the latest version from this direct <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/skeleton/student-o2physics.cxx">link</a>) into subdirectory <code>~/scratch/aliceO2-1/O2Physics/PWGCF/MultiparticleCorrelations/Tasks</code>;</p>
+</li>
+<li>
+<p>in that subdirectory, there is a <strong>cmake</strong> configuration file "CMakeLists.txt". Append the following lines at the end of that file:</p>
+<div class="language-cmake highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">o2physics_add_dpl_workflow</span><span class="p">(</span><span class="s">student-o2physics</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">                    </span><span class="s">SOURCES</span><span class="w"> </span><span class="s">student-o2physics.cxx</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">                    </span><span class="s">PUBLIC_LINK_LIBRARIES</span><span class="w"> </span><span class="s">O2::Framework</span><span class="w"> </span><span class="s">O2Physics::AnalysisCore</span><span class="w"> </span><span class="s">O2Physics::PWGCFCore</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">                    </span><span class="s">COMPONENT_NAME</span><span class="w"> </span><span class="s">Analysis</span><span class="p">)</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>compile centrally this newly added task (for all later compilations, use <strong>ninja</strong> in the next step, to compile differentially only changes in the module PWG-CF, where your code sits);</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/scratch/aliceO2-1
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>aliBuild<span class="w"> </span>build<span class="w"> </span>O2Physics<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span><span class="w"> </span>--defaults<span class="w"> </span>o2<span class="w"> </span>--debug<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>build.log
+</span></code></pre></div>
+<p>If the above compilation fails due to large memory consumption, restart the above procedure by using smaller number of CPUs (e.g. use <code>-j 3</code> instead of <code>-j 4</code>, and so on);</p>
+</li>
+<li>
+<p>if the above compilation succeeded, open a new terminal, and check if you can recompile differentially only PWG-CF module using <strong>ninja</strong>, to check if the newly added task is taken into account:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/scratch/aliceO2-1
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$<span class="w"> </span>alienv<span class="w"> </span>enter<span class="w"> </span>O2Physics/latest<span class="w"> </span>ninja/latest
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>$<span class="w"> </span>bash
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>sw/BUILD/O2Physics-latest/O2Physics
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>$<span class="w"> </span>ninja<span class="w"> </span>install<span class="w"> </span>PWGCF/all<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>build.log
+</span></code></pre></div>
+<p>The first time, the above <strong>ninja</strong> compilation should just go through. After that, introduce some trivial minor change in the class "student-o2physics.cxx", and re-execute the last line above. Since now you are only re-compiling differentially the PWG-CF module, the compilation shall take less than ~ 1 min. If the compilation fails, inspect the content of the "build.log" file. </p>
+</li>
+<li>
+<p>if the compilation went through, organize your working area for local O2 analysis in the following way:</p>
+<ul>
+<li>
+<p>keep one separate terminal always open only for <strong>ninja</strong> compilation;</p>
+</li>
+<li>
+<p>in a new terminal, initialize the environment for O2Physics which you just compiled with <strong>ninja</strong> in a separate terminal (e.g. using the utility function <strong>MenuO2</strong>). In this terminal create some working directory (refering to it as "workDir" below), where you are going to run O2 analysis locally. Each time you introduce some change in the analysis code and recompile it with <strong>ninja</strong> in a separate terminal, in this new terminal automatically you will be using its latest version; </p>
+</li>
+<li>
+<p>copy and maintain in "workDir" the JSON configuration file and the workflow script, which are introduced in detail next.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-json-configuration-file">2. JSON configuration file</h4>
+<p>In this section the JSON configuration file is introduced. As its name suggests, this file is used to set and adjusts all configurables options of user's analysis task "student-o2physics.cxx", as well as of other tasks which are added to the analysis workflow (the script which defines the analysis workflow is introduced in the next section). </p>
+<p>Copy to your current working directory "workDir" (see the previous section) the example JSON config file <code>config-3.json</code> from this direct <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/skeleton/config-3.json">link</a>. The config file is indexed with "-3", to indicate that as the O2 framework is still regularly evolving, you will need to maintain in parallel different version of JSON config file, for different versions of O2Physics used in the analysis. </p>
+<div class="language-JSON highlight"><span class="filename">File: src/skeleton/config-3.json</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">"internal-dpl-aod-reader"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nt">"__aod-file-private"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/scratch3/abilandz/O2/Datasets/Run_3/2023/LHC23zzh/544122/apass3/0440/o2_ctf_run00544122_orbit0160006240_tf0000749850_epn059/003/AO2D.root"</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nt">"aod-file-private"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/home/abilandz/scratch/O2/Datasets/Run_3/2023/LHC23zzh/544116/apass5/0140/o2_ctf_run00544116_orbit0034437888_tf0000000601_epn103/008/AO2D.root"</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nt">"__aod-file-private"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/scratch3/abilandz/O2/Datasets/Run_3/2024/LHC24g3/0/544122/AOD/001/AO2D.root"</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">"eventselection-run3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nt">"evselOpts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="nt">"isMC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="nt">"ccdburl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/alice-ccdb.cern.ch"</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">"propagation-service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">        </span><span class="nt">"processRealData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="nt">"processMonteCarlo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="nt">"processRealDataWithPID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nt">"processMonteCarloWithPID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nt">"mult-cent-table"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="nt">"processMonteCarlo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="nt">"processMonteCarlo2Mults"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="nt">"student-o2-physics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="nt">"__ process switches __"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"this is a comment"</span><span class="p">,</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="nt">"processRec"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="nt">"processRecSim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="nt">"processSim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="nt">"__ configure your task __"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"this is a comment"</span><span class="p">,</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">         </span><span class="nt">"cfDryRun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">        </span><span class="nt">"__ binning __ "</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"this is a comment"</span><span class="p">,</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">        </span><span class="nt">"cf_pt_bins"</span><span class="p">:</span><span class="w">   </span><span class="p">{</span><span class="nt">"values"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"200"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0."</span><span class="p">,</span><span class="w"> </span><span class="s2">"10."</span><span class="p">]}</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>By using this JSON file, one can for instance specify the path to the local "AO2D.root" file which will be processed, whether or not a task which was added to the workflow shall process real data or Monte Carlo, which histograms should be booked or cuts applies in the user's task "student-o2-physics", etc. </p>
+<p>In the above JSON config file <code>config-3.json</code>  only the essential configurable options of each task which was added to the workflow is kept. One can obtain all configurable options for each task added to the workflow from automatically generated file <code>dpl-config.json</code> which is automatically dumped by the O2 framework in the directory in which the framework is executed (see next section).</p>
+<p>If the configurable used in the JSON config is not supported by the corresponding task, it will be silently ignored by the framework. Since JSON format does not support comments, in what follows below we utilize the following convention in the JSON config:</p>
+<div class="language-JSON highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="err">...</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">"some-supported-configurable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first setting"</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">"__some-supported-configurable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"second setting"</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="err">...</span>
+</span></code></pre></div>
+<p>In the above example, in the 2nd line we have appended <code>__</code> (two consecutive underscores) to the existing configurable named <code>some-supported-configurable</code>. Since <code>__some-supported-configurable</code> does not exist, it's silently ignored, i.e. it acts in the same way as this whole line was commented out.  This way, by prepending or removing <code>__</code> to the name of configurable variable in the JSON config file, one can effectively comment in or comment out a specific setting for a given configurable.</p>
+<p>To leading order, one needs to modify regularly in the JSON config file <code>config-3.json</code> only the following configurable fields:</p>
+<ol>
+<li>
+<p><code>"aod-file-private"</code> &mdash; this configurable specifies the local path to a <code>AO2D.root</code> file which will be processed. It's currently set to the local path <code>/home/abilandz/scratch/O2/Datasets/Run_3/2023/LHC23zzh/544116/apass5/0140/o2_ctf_run00544116_orbit0034437888_tf0000000601_epn103/008/AO2D.root</code>", which you need to adapt to your local computer. This specific "AOD2.root" file can be copied from AliEn catalog locally in the current working directory, by executing in the terminal where O2 environment is already enabled (e.g. using the <code>MenuO2</code> utility function):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>alien_cp<span class="w"> </span>/alice/data/2023/LHC23zzh/544116/apass5/0140/o2_ctf_run00544116_orbit0034437888_tf0000000601_epn103/008/AO2D.root<span class="w"> </span>file:.
+</span></code></pre></div>
+<p>The subdirectory path within the local directory <code>/home/abilandz/scratch/O2/Datasets/Run_3/2023</code> is kept intentional as the subdirectory path within the top-level AliEn directory for 2023 real data <code>/alice/data/2023</code> , so that it can easily be traced back where the local file <code>AO2D.root</code> originated from. In the above <strong>alien_cp</strong> command, instead of copying <code>AO2D.root</code> file to current working directory, one can copy that file into some other directory, simply by replacing at the end <code>file:.</code> with <code>file:path-to-some-other-directory</code> &mdash; this is the standard syntax. </p>
+<p>Analogously, for Monte Carlo data which was anchored to the above real data (meaning that detector conditions were the same both in Monte Carlo production and in real data), one can for instance use Monte Carlo production <code>LHC25f3_gp</code> (the general-purpose Pythia 8 production anchored specifically to LHC23zzh, reconstruction pass5). One example file of that Monte Carlo production in the AliEn catalog is:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/alice/sim/2025/LHC25f3_gp/0/544116/AOD/044/AO2D.root
+</span></code></pre></div>
+It can be copied locally in the same way using <strong>alien_cp</strong> command. </p>
+</li>
+<li>
+<p>In the JSON config, one can maintain the both fields in the following way. When running over real data, one sets (adapt <code>/home/abilandz/scratch/O2/Datasets/Run_3</code> to to your personal local path):
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="s2">"aod-file-private"</span>:<span class="w"> </span><span class="s2">"/home/abilandz/scratch/O2/Datasets/Run_3/2023/LHC23zzh/544116/apass5/0140/o2_ctf_run00544116_orbit0034437888_tf0000000601_epn103/008/AO2D.root"</span>,
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s2">"__aod-file-private"</span>:<span class="w"> </span><span class="s2">"/scratch3/abilandz/O2/Datasets/Run_3/2025/LHC25f3_gp/0/544116/AOD/044/AO2D.root"</span>
+</span></code></pre></div>
+    and when running over Monte Carlo, one simply swaps:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="s2">"__aod-file-private"</span>:<span class="w"> </span><span class="s2">"/home/abilandz/scratch/O2/Datasets/Run_3/2023/LHC23zzh/544116/apass5/0140/o2_ctf_run00544116_orbit0034437888_tf0000000601_epn103/008/AO2D.root"</span>,
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s2">"aod-file-private"</span>:<span class="w"> </span><span class="s2">"/scratch3/abilandz/O2/Datasets/Run_3/2025/LHC25f3_gp/0/544116/AOD/044/AO2D.root"</span>
+</span></code></pre></div>
+    Note the standard trick: When I prepend <code>__</code> to the name of configurable variable in the JSON config  this variable is not recognized, and then the whole field acts merely as commented-out code.</p>
+</li>
+<li>
+<p>In the same spirit, one swaps for "event-selection-service" task settings in JSON config the following configurables, whether running either over real data or over Monte Carlo:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="w"> </span><span class="s2">"isMC"</span>:<span class="w"> </span><span class="s2">"false"</span>
+</span></code></pre></div>
+    into 
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="s2">"isMC"</span>:<span class="w"> </span><span class="s2">"true"</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>For "propagationservice" settings in JSON config, one needs to swap:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="s2">"processRealData"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="s2">"processMonteCarlo"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+</span></code></pre></div>
+    into 
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="s2">"processRealData"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s2">"processMonteCarlo"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+</span></code></pre></div></p>
+</li>
+<li>For "multcenttable":
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="s2">"processMonteCarlo"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s2">"processMonteCarlo2Mults"</span>:<span class="w"> </span><span class="s2">"false"</span>
+</span></code></pre></div>
+    into
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="s2">"processMonteCarlo"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s2">"processMonteCarlo2Mults"</span>:<span class="w"> </span><span class="s2">"true"</span>
+</span></code></pre></div></li>
+<li>For your example task "student-o2-physics" in the JSON config, if you want to process in Monte Carlo only the reconstructed information, no changes is needed (i.e. you can leave the very same settings as when you are processing real data). However, if you want to process both reconstructed + simulated, you need to change:
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="s2">"processRec"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s2">"processRecSim"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+</span></code></pre></div>
+    into 
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="s2">"processRec"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s2">"processRecSim"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+</span></code></pre></div></li>
+</ol>
+<p>With those changes in the JSON config file, the workflow remains the same whether you process real data or Monte Carlo data, and that workflow is detailed in the next section.</p>
+<h4 id="3-workflow">3. Workflow</h4>
+<p>Copy to your current working directory "workDir" the example workflow script <code>wf-3.sh</code> from this direct <a href="https://github.com/abilandz/O2Tutorial/blob/gh-pages/src/skeleton/wf-3.sh">link</a>, or copy from the code snippet below:</p>
+<div class="language-Bash highlight"><span class="filename">File: src/skeleton/wf-3.sh</span><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Workflow to run over PbPb Run 3 data collected in 2023.</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># Last time tested succcesfully using O2Physics "master" dated Mon Oct 19 2026, and over these datasets:</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># a) "Rec": LHC23zzh   (real Pb-Pb data, apass5)</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># b) "Rec": LHC25f3_gp   (Monte Carlo, general gurpose anchored to apass5 of PbPb 2023 data periods, Model: Pythia 8 HI)</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1"># c) "RecSim": LHC25f3_gp   (same as previous)</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="c1"># d) "Sim": !!! not working !!!</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="nv">JsonFile</span><span class="o">=</span><span class="s1">'--configuration json://config-3.json --shm-segment-size 4000000000'</span><span class="w"> </span><span class="c1"># circumventing error: "shmem: could not create a message of size ..."</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>o2-analysis-event-selection-service<span class="w"> </span><span class="nv">$JsonFile</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w"> </span><span class="p">|</span><span class="w"> </span>o2-analysis-propagationservice<span class="w"> </span><span class="nv">$JsonFile</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w"> </span><span class="p">|</span><span class="w"> </span>o2-analysis-trackselection<span class="w"> </span><span class="nv">$JsonFile</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w"> </span><span class="p">|</span><span class="w"> </span>o2-analysis-multcenttable<span class="w"> </span><span class="nv">$JsonFile</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w"> </span><span class="p">|</span><span class="w"> </span>o2-analysis-cf-student-o2physics<span class="w"> </span><span class="nv">$JsonFile</span><span class="w"> </span>-b<span class="w">  </span><span class="c1"># when running remotely without graphics, use additional flag "-b"</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+</span></code></pre></div>
+<p>For each of the tasks added to the above workflow, namely <strong>o2-analysis-event-selection-service</strong>, <strong>o2-analysis-propagationservice</strong>, etc., when you execute the workflow, you will get for each task all configurables in the file "dpl-config.json". You can take some fields from this general config "dpl-config.json" into your personal JSON config <code>config-3.json</code> and change the default values, but do that really only if you fully understand what the effect of those changes is. </p>
+<p>The workflow is designed in such a way that each O2 executable is chained with another by using the standard pipe mechanism <code>|</code> . This is the standard mechanism in Unix-based systems how the output of one executable can become input for another.  </p>
+<p>Finally, the workflow is simply executed as:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>wf-3.sh
+</span></code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="../javascripts/nav-expand.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
