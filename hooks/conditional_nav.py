@@ -18,8 +18,8 @@ def on_config(config):
                 {"7: How to commit the local code to central O2 repository": "src/commit.md"},
             ]},
             {"Challenges": [
-                {"Challenge 1": "Challenges/Challenge_1.md"},
-                {"Challenge 2": "Challenges/Challenge_2.md"},
+                {"Challenge 1": "src/challenges/challenge_1.md"},
+                {"Challenge 2": "src/challenges/challenge_2.md"},
             ]},
         ]
 
